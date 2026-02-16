@@ -1,0 +1,41 @@
+﻿# Archives
+*.zip
+*.7z
+*.rar
+
+# Media and generated artifacts not needed for Pages deploy
+tools/
+cutscenes/*
+!cutscenes/1MSTAR.mp4
+!cutscenes/1bil_trancend.mp3.mpeg
+!cutscenes/100maura.ogg
+!cutscenes/1M Sound.mpeg
+!cutscenes/legend.ogg
+!cutscenes/EXALTED.ogg
+!cutscenes/bell_toll.mp3
+tmp_*/
+temp_*/
+CUTSCENE_FINAL/
+cutscenes_trimmed/
+cutscene_final_*.log
+cutscene_final_*.err
+ai_*_run.log
+ai_*_run.err
+
+# Local tooling outputs
+__pycache__/
+*.pyc
+
+# Editor and local config
+.vscode/
+.cursor/
+.gemini/
+.agent/
+.playwright-mcp/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Build output
+site/
