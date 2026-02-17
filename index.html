@@ -11037,9 +11037,19 @@
                 }
 
                 const lucForThisAura = isNative ? (totalLuck * biomeMultiplier) : totalLuck;
-                const effectiveRarity = baseChance / lucForThisAura;
-                return { aura, baseChance, effectiveRarity };
-            }).sort((a, b) => b.baseChance - a.baseChance); // RAREST FIRST
+                const effectiveRarity = baseChance / Math.max(lucForThisAura, Number.EPSILON);
+
+                // Shared-odds model: per-aura hit chance is adjusted luck chance, capped at 50%.
+                let probability = 1 / effectiveRarity;
+                probability = Math.min(Math.max(probability, 0), 0.5);
+
+                return { aura, baseChance, effectiveRarity, probability };
+            }).sort((a, b) => b.effectiveRarity - a.effectiveRarity); // RAREST FIRST (after adjustments)
+
+            if (auraPool.length === 0) {
+                // Defensive fallback to avoid an infinite loop when all candidates are filtered out.
+                return AURAS.find(a => a.id === 'nothing') || AURAS[0];
+            }
 
             // 4. THE LOOPING WATERFALL
             // Explicitly loop until an aura is selected.
@@ -11047,13 +11057,7 @@
             // "if nothing is selected, the process starts again" -> Loop
             while (true) {
                 for (const item of auraPool) {
-                    const { aura, baseChance, effectiveRarity } = item;
-
-                    // Roll for current aura: Success chance is totalLuck / rarity
-                    // OFFICIAL RULE: 50% PROBABILITY CAP - odds cannot exceed 1 in 2
-                    let probability = 1 / effectiveRarity;
-                    probability = Math.min(probability, 0.5); // Cap at 50%
-
+                    const { aura, baseChance, probability } = item;
                     if (Math.random() < probability) {
                         const prob = (probability * 100).toFixed(4);
                         // console.log(`[ROLL SUCCESS] ${aura.name} | 1 in ${baseChance.toLocaleString()} | Hit Chance: ${prob}%`);
