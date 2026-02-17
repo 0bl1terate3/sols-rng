@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -2775,7 +2775,7 @@
         }
 
         .aura-storage-item.locked::after {
-            content: '🔒';
+            content: 'L';
             position: absolute;
             top: 2px;
             right: 4px;
@@ -2900,7 +2900,7 @@
         }
 
         .character-preview::before {
-            content: '☺';
+            content: '@';
             font-size: 60px;
             color: rgba(255, 255, 255, 0.3);
         }
@@ -3350,6 +3350,39 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 4px;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+        }
+
+        .admin-panel-inner.chromatic-crusher-rgb {
+            border-color: rgba(255, 255, 255, 0.45);
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.9),
+                0 0 26px rgba(255, 0, 128, 0.28),
+                0 0 34px rgba(0, 180, 255, 0.24);
+            animation: chromatic-admin-hueshift 0.32s linear infinite;
+        }
+
+        .admin-panel-inner.chromatic-crusher-rgb .admin-header {
+            border-bottom-color: rgba(255, 255, 255, 0.22);
+            box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .admin-title.chromatic-crusher-rgb-text {
+            color: #fff;
+            text-shadow:
+                0 0 10px rgba(255, 0, 120, 0.8),
+                0 0 14px rgba(0, 200, 255, 0.8),
+                0 0 18px rgba(120, 255, 120, 0.6);
+            animation: chromatic-admin-title-flicker 0.22s steps(2, end) infinite;
+        }
+
+        @keyframes chromatic-admin-hueshift {
+            0% { filter: saturate(1.7) hue-rotate(0deg); }
+            100% { filter: saturate(1.7) hue-rotate(360deg); }
+        }
+
+        @keyframes chromatic-admin-title-flicker {
+            0%, 100% { opacity: 0.86; }
+            50% { opacity: 1; }
         }
 
         .admin-header {
@@ -4400,42 +4433,42 @@
     <div class="menu-panel" id="menu-panel">
         <div class="menu-header">
             <span class="menu-title">Menu</span>
-            <button class="menu-close" id="menu-close">×</button>
+            <button class="menu-close" id="menu-close">X</button>
         </div>
         <div class="menu-items">
             <!-- Season Pass -->
             <button class="menu-item premium" data-action="season-pass">
-                <div class="menu-item-watermark">★</div>
+                <div class="menu-item-watermark">*</div>
                 <span class="menu-item-text">Season Pass</span>
             </button>
 
             <!-- Achievements -->
             <button class="menu-item" data-action="achievements">
-                <div class="menu-item-watermark">★</div>
+                <div class="menu-item-watermark">*</div>
                 <span class="menu-item-text">Achievements</span>
             </button>
 
             <!-- Fishing -->
             <button class="menu-item" data-action="fishing">
-                <div class="menu-item-watermark">🎣</div>
+                <div class="menu-item-watermark">F</div>
                 <span class="menu-item-text">Fishing</span>
             </button>
 
             <!-- Settings -->
             <button class="menu-item" data-action="settings">
-                <div class="menu-item-watermark">⚙</div>
+                <div class="menu-item-watermark">S</div>
                 <span class="menu-item-text">Settings</span>
             </button>
 
             <!-- Robux Shop -->
             <button class="menu-item" data-action="shop">
-                <div class="menu-item-watermark">🛒</div>
+                <div class="menu-item-watermark">$</div>
                 <span class="menu-item-text">Robux Shop</span>
             </button>
 
             <!-- Developers -->
             <button class="menu-item" data-action="developers">
-                <div class="menu-item-watermark">🧩</div>
+                <div class="menu-item-watermark">D</div>
                 <span class="menu-item-text">Developers</span>
             </button>
         </div>
@@ -4465,7 +4498,7 @@
         <!-- Aura Log Panel -->
         <div class="aura-log-panel" id="aura-log-panel">
             <div class="aura-log-header">
-                <span class="aura-log-title">📜 Aura Log</span>
+                <span class="aura-log-title">Aura Log</span>
                 <div class="aura-log-controls">
                     <select id="aura-log-threshold" title="Minimum rarity to display">
                         <option value="0">All</option>
@@ -4478,7 +4511,7 @@
                         <option value="100000000">100M+</option>
                         <option value="1000000000">1B+</option>
                     </select>
-                    <button class="aura-log-toggle" id="aura-log-toggle">−</button>
+                    <button class="aura-log-toggle" id="aura-log-toggle">-</button>
                 </div>
             </div>
             <div class="aura-log-options-row">
@@ -4490,7 +4523,7 @@
                     <input type="checkbox" id="aura-log-show-biome" checked>
                     <span>Show Biome</span>
                 </label>
-                <button class="aura-log-clear-btn" id="aura-log-clear" title="Clear Log">🗑️</button>
+                <button class="aura-log-clear-btn" id="aura-log-clear" title="Clear Log">Clear</button>
             </div>
             <div class="aura-log-username-row">
                 <input type="text" id="aura-log-username" placeholder="@Player" value="@Player" maxlength="20">
@@ -4592,7 +4625,7 @@
     <div class="inventory-panel" id="inventory-panel">
         <div class="inventory-header">
             <span class="inventory-title">Inventory</span>
-            <button class="inventory-close" id="inventory-close">×</button>
+            <button class="inventory-close" id="inventory-close">X</button>
         </div>
 
         <div class="inventory-tabs">
@@ -4631,7 +4664,7 @@
             <!-- Right Panel: Gear List -->
             <div class="inventory-right">
                 <div class="inventory-search">
-                    <input type="text" id="inventory-search" placeholder="🔍 Search...">
+                    <input type="text" id="inventory-search" placeholder="Search...">
                 </div>
                 <div class="inventory-gear-list" id="inventory-gear-list">
                     <!-- Gear grids will be populated by JS -->
@@ -4644,7 +4677,7 @@
     <div class="workshop-panel" id="workshop-panel">
         <div class="workshop-header">
             <span class="workshop-title">Jake's workshop</span>
-            <button class="workshop-close" id="workshop-close">×</button>
+            <button class="workshop-close" id="workshop-close">X</button>
         </div>
 
         <div class="workshop-tabs">
@@ -4685,7 +4718,7 @@
     <div class="settings-panel" id="settings-panel">
         <div class="settings-header">
             <span class="settings-title">Settings</span>
-            <button class="settings-close" id="settings-close">×</button>
+            <button class="settings-close" id="settings-close">X</button>
         </div>
 
         <div class="settings-tabs">
@@ -4722,7 +4755,7 @@
         <div class="settings-content">
             <!-- Rolling Settings -->
             <div class="settings-tab-content" id="tab-rolling">
-                <div class="settings-section-title">◀ Roll Settings ▶</div>
+                <div class="settings-section-title">&lt; Roll Settings &gt;</div>
                 <div class="settings-grid">
                     <div class="setting-row full-width">
                         <div class="corner tl"></div>
@@ -4812,6 +4845,15 @@
                         <div class="corner tr"></div>
                         <div class="corner bl"></div>
                         <div class="corner br"></div>
+                        <div class="setting-label">Hide All Buffs (Less Lag)</div>
+                        <div class="setting-controls"><input type="checkbox" id="set-hide-buffs-hud"
+                                class="setting-checkbox"></div>
+                    </div>
+                    <div class="setting-row">
+                        <div class="corner tl"></div>
+                        <div class="corner tr"></div>
+                        <div class="corner bl"></div>
+                        <div class="corner br"></div>
                         <div class="setting-label" id="open-filter-label" style="cursor: pointer;">Aura Filter</div>
                         <div class="setting-controls"><button class="setting-btn" id="open-filter-btn">Open</button>
                         </div>
@@ -4821,7 +4863,7 @@
 
             <!-- Notifications Settings -->
             <div class="settings-tab-content" id="tab-notifications" style="display:none;">
-                <div class="settings-section-title">◀ Notification Settings ▶</div>
+                <div class="settings-section-title">&lt; Notification Settings &gt;</div>
                 <div class="settings-grid">
                     <div class="setting-row">
                         <div class="corner tl"></div>
@@ -4885,7 +4927,7 @@
 
             <!-- Miscellaneous Settings -->
             <div class="settings-tab-content" id="tab-misc" style="display:none;">
-                <div class="settings-section-title">◀ Miscellaneous ▶</div>
+                <div class="settings-section-title">&lt; Miscellaneous &gt;</div>
                 <div class="settings-grid">
                     <div class="setting-row">
                         <div class="corner tl"></div>
@@ -4967,7 +5009,7 @@
 
             <!-- SFX Settings -->
             <div class="settings-tab-content" id="tab-sfx" style="display:none;">
-                <div class="settings-section-title">◀ SFX Settings ▶</div>
+                <div class="settings-section-title">&lt; SFX Settings &gt;</div>
                 <div class="settings-grid">
                     <div class="setting-row full-width">
                         <div class="corner tl"></div>
@@ -5058,7 +5100,7 @@
 
         <div class="achievements-header">
             <div class="achievements-title">Achievements</div>
-            <div id="achievements-close" class="achievements-close">×</div>
+            <div id="achievements-close" class="achievements-close">X</div>
         </div>
 
         <div class="achievements-body">
@@ -5100,7 +5142,7 @@
         <div class="admin-panel-inner">
             <div class="admin-header">
                 <span class="admin-title">Admin Panel</span>
-                <button class="admin-close" id="admin-close">×</button>
+                <button class="admin-close" id="admin-close">X</button>
             </div>
             <div class="admin-tabs">
                 <button class="admin-tab active" data-tab="biomes">Biomes</button>
@@ -5113,7 +5155,7 @@
 
             <!-- Biomes Section -->
             <div class="admin-section" id="section-biomes">
-                <div class="admin-section-title">◄ Biome Settings ►</div>
+                <div class="admin-section-title">&lt; Biome Settings &gt;</div>
                 <div class="biome-grid" id="biome-grid">
                     <!-- Biomes will be populated by JS -->
                 </div>
@@ -5121,10 +5163,10 @@
 
             <!-- Time Section -->
             <div class="admin-section" id="section-time" style="display: none;">
-                <div class="admin-section-title">◄ Time Settings ►</div>
+                <div class="admin-section-title">&lt; Time Settings &gt;</div>
                 <div class="time-controls">
-                    <button class="time-option active" id="time-day">☀ DAYTIME</button>
-                    <button class="time-option" id="time-night">☽ NIGHTTIME</button>
+                    <button class="time-option active" id="time-day">DAYTIME</button>
+                    <button class="time-option" id="time-night">NIGHTTIME</button>
                 </div>
                 <div class="time-info">
                     <span class="time-label">Auto-cycle:</span>
@@ -5134,20 +5176,20 @@
 
             <!-- Items Section (Gear, Materials, Potions, Chests) -->
             <div class="admin-section" id="section-items" style="display: none;">
-                <div class="admin-section-title" style="color: #2ecc71;">◄ Give Gear ►</div>
+                <div class="admin-section-title" style="color: #2ecc71;">&lt; Give Gear &gt;</div>
                 <div class="admin-gear-search">
-                    <input type="text" id="admin-gear-search" placeholder="🔍 Search gears...">
+                    <input type="text" id="admin-gear-search" placeholder="Search gears...">
                 </div>
                 <div class="admin-gear-grid" id="admin-gear-grid">
                     <!-- Gears will be populated by JS -->
                 </div>
-                <div class="admin-section-title" style="margin-top: 15px; color: #3498db;">◄ Give Materials ►</div>
+                <div class="admin-section-title" style="margin-top: 15px; color: #3498db;">&lt; Give Materials &gt;</div>
                 <div class="admin-materials-row">
                     <input type="text" id="admin-material-name" placeholder="Material name (e.g. Rare)">
                     <input type="number" id="admin-material-count" placeholder="Amount" value="100" min="1">
                     <button class="admin-give-btn" id="admin-give-material">Give</button>
                 </div>
-                <div class="admin-section-title" style="margin-top: 15px; color: #e056fd;">◄ Give Potions ►</div>
+                <div class="admin-section-title" style="margin-top: 15px; color: #e056fd;">&lt; Give Potions &gt;</div>
                 <div class="admin-materials-row" style="margin-bottom: 10px;">
                     <span style="color: #888; font-size: 11px;">Quantity:</span>
                     <input type="number" id="admin-potion-count" placeholder="Amount" value="10" min="1" max="9999"
@@ -5157,7 +5199,7 @@
                 <div class="admin-gear-grid" id="admin-potion-grid">
                     <!-- Potions will be populated by JS -->
                 </div>
-                <div class="admin-section-title" style="margin-top: 15px; color: #f39c12;">◄ Give Chests ►</div>
+                <div class="admin-section-title" style="margin-top: 15px; color: #f39c12;">&lt; Give Chests &gt;</div>
                 <div class="admin-materials-row" style="margin-bottom: 10px;">
                     <span style="color: #888; font-size: 11px;">Quantity:</span>
                     <input type="number" id="admin-chest-count" placeholder="Amount" value="10" min="1" max="9999"
@@ -5171,13 +5213,13 @@
 
             <!-- Player Section (Stats, VIP, Force Roll) -->
             <div class="admin-section" id="section-player" style="display: none;">
-                <div class="admin-section-title" style="color: #9b59b6;">◄ Player Stats ►</div>
+                <div class="admin-section-title" style="color: #9b59b6;">&lt; Player Stats &gt;</div>
                 <div class="admin-materials-row">
                     <input type="number" id="admin-set-rolls" placeholder="Total Rolls" value="">
                     <button class="admin-give-btn" id="admin-update-rolls">Set Rolls</button>
                 </div>
 
-                <div class="admin-section-title" style="margin-top: 15px; color: #ffd700;">◄ VIP Status ►</div>
+                <div class="admin-section-title" style="margin-top: 15px; color: #ffd700;">&lt; VIP Status &gt;</div>
                 <div class="admin-materials-row" style="gap: 10px;">
                     <button class="admin-give-btn" id="admin-toggle-vip"
                         style="background: rgba(255, 215, 0, 0.2); border-color: rgba(255, 215, 0, 0.5); color: #ffd700; flex: 1;">VIP:
@@ -5190,9 +5232,9 @@
                     VIP = x1.2 luck | VIP + VIP+ = x1.3 luck
                 </div>
 
-                <div class="admin-section-title" style="margin-top: 15px; color: #00cec9;">◄ Force Roll ►</div>
+                <div class="admin-section-title" style="margin-top: 15px; color: #00cec9;">&lt; Force Roll &gt;</div>
                 <div class="admin-materials-row">
-                    <input type="text" id="admin-force-roll-search" placeholder="🔍 Search aura by name or ID..."
+                    <input type="text" id="admin-force-roll-search" placeholder="Search aura by name or ID..."
                         style="flex: 2;">
                     <button class="admin-give-btn" id="admin-force-roll-btn"
                         style="background: rgba(0, 206, 201, 0.2); border-color: rgba(0, 206, 201, 0.5); color: #00cec9;">Force
@@ -5208,7 +5250,7 @@
 
             <!-- Testing Section (Cutscenes) -->
             <div class="admin-section" id="section-testing" style="display: none;">
-                <div class="admin-section-title" style="color: #e74c3c;">◄ Test Cutscenes ►</div>
+                <div class="admin-section-title" style="color: #e74c3c;">&lt; Test Cutscenes &gt;</div>
                 <div class="admin-materials-row">
                     <input type="text" id="admin-cutscene-aura" placeholder="Aura ID (e.g. chromatic_genesis)"
                         style="flex: 1;">
@@ -5216,7 +5258,7 @@
                 </div>
                 <div id="admin-cutscene-list" style="margin-top: 10px; max-height: 200px; overflow-y: auto;"></div>
 
-                <div class="admin-section-title" style="margin-top: 20px; color: #e056fd;">◄ Cutscene Settings ►</div>
+                <div class="admin-section-title" style="margin-top: 20px; color: #e056fd;">&lt; Cutscene Settings &gt;</div>
                 <div class="admin-materials-row" style="gap: 10px;">
                     <button class="admin-give-btn" id="admin-toggle-potion-cutscenes"
                         style="background: rgba(224, 86, 253, 0.2); border-color: rgba(224, 86, 253, 0.5); color: #e056fd; flex: 1;">Only
@@ -5229,7 +5271,7 @@
 
             <!-- Danger Section -->
             <div class="admin-section" id="section-danger" style="display: none;">
-                <div class="admin-section-title" style="color: #ff6b6b;">⚠ DANGER ZONE ⚠</div>
+                <div class="admin-section-title" style="color: #ff6b6b;">DANGER ZONE</div>
                 <div style="font-size: 11px; color: #888; margin-bottom: 15px; text-align: center;">
                     These actions cannot be undone!
                 </div>
@@ -5259,7 +5301,7 @@
     <div class="filter-panel" id="filter-panel">
         <div class="filter-header">
             <span class="filter-title">Filter Settings</span>
-            <button class="filter-close" id="filter-close">×</button>
+            <button class="filter-close" id="filter-close">X</button>
         </div>
         <div class="filter-content" id="filter-list">
             <!-- Rows will be populated by JS -->
@@ -5297,8 +5339,8 @@
     <!-- Stats Panel (Top Right) -->
     <div class="stats-panel" id="stats-panel">
         <div class="stats-header">
-            <span class="stats-title">📊 Stats</span>
-            <button class="stats-toggle" id="stats-toggle">−</button>
+            <span class="stats-title">Stats</span>
+            <button class="stats-toggle" id="stats-toggle">-</button>
         </div>
         <div class="stats-content" id="stats-content">
             <div class="stat-row">
@@ -5391,7 +5433,7 @@
             </div>
             <div class="stat-divider"></div>
             <div class="stat-row stat-tier-header">
-                <span class="stat-label">◄ Tier Counts ►</span>
+                <span class="stat-label">&lt; Tier Counts &gt;</span>
             </div>
             <div class="stat-row stat-tier-row">
                 <span class="stat-label" style="color: #aaa;">Common</span>
@@ -6886,7 +6928,7 @@
             if (rewards.megaPotionChest) playerInventory.chests['mega_potion_chest'] = (playerInventory.chests['mega_potion_chest'] || 0) + rewards.megaPotionChest;
 
             // Show notification
-            const categoryInfo = ACHIEVEMENT_CATEGORIES[achievement.category] || { color: '#f39c12', icon: '🏆' };
+            const categoryInfo = ACHIEVEMENT_CATEGORIES[achievement.category] || { color: '#f39c12', icon: '' };
             showAchievementNotification(achievement, categoryInfo);
 
             // Check for achievement progress achievements
@@ -6900,7 +6942,7 @@
             notification.innerHTML = `
                 <div class="achievement-icon">${categoryInfo.icon}</div>
                 <div class="achievement-content">
-                    <div class="achievement-header">🏆 Achievement Unlocked!</div>
+                    <div class="achievement-header">Achievement Unlocked!</div>
                     <div class="achievement-name" style="color: ${categoryInfo.color}">${achievement.name}</div>
                     <div class="achievement-desc">${achievement.description}</div>
                     ${achievement.title ? `<div class="achievement-title">Title: "${achievement.title}"</div>` : ''}
@@ -6951,6 +6993,7 @@
         // If you use Fortune II, it adds a separate buff.
         let activeBuffs = {}; // { 'fortune_i': { duration: 300, stats: {...}, name: '...' } }
         let oneTimeBuffs = []; // List of buffs to consume on next roll: [ { stats: {...}, name: '...' } ]
+        const MAX_ONE_TIME_BUFF_QUEUE = 500;
 
         // --- User Settings State ---
         const userSettings = {
@@ -6964,6 +7007,7 @@
                 skipCutsceneRarity: 10,
                 skipCutsceneEnabled: false,
                 buffsEnabled: true,
+                hideAllBuffs: false,
                 storageWarning: true,
                 playNewAuraCutscene: true
             },
@@ -7044,7 +7088,7 @@
             'potion_chest': {
                 name: 'Potion Chest',
                 color: '#f1c40f',
-                icon: '📦',
+                icon: 'BOX',
                 description: 'A basic chest containing common potions. Bulk drops possible!',
                 lootTable: [
                     { id: 'lucky_potion', weight: 2000, quantity: 50 },     // 20% - drops 50
@@ -7069,7 +7113,7 @@
             'rare_potion_chest': {
                 name: 'Rare Potion Chest',
                 color: '#3498db',
-                icon: '🎁',
+                icon: 'CHEST',
                 description: 'Higher quality potions with better odds for rare concoctions!',
                 lootTable: [
                     { id: 'lucky_potion', weight: 1000, quantity: 50 },    // 10% - drops 50
@@ -7096,7 +7140,7 @@
             'mega_potion_chest': {
                 name: 'Mega Potion Chest',
                 color: '#9b59b6',
-                icon: '💎',
+                icon: 'GEM',
                 description: 'The ultimate chest! High chance for rare and powerful potions.',
                 lootTable: [
                     { id: 'fortune_ii', weight: 2500, quantity: 5 },       // 25% - drops 5 (common per wiki)
@@ -7202,7 +7246,7 @@
 
         // Calculate Basic Buffs (additive luck from gear + duration potions)
         // This does NOT include Special Buffs (flat luck from one-time potions)
-        // Official Formula: ((1 + Basic Buffs) × Bonus Roll + Special Buffs) × VIP
+        // Official Formula: ((1 + Basic Buffs) * Bonus Roll + Special Buffs) * VIP
         function calculateBasicBuffs() {
             let basicLuck = 0;
 
@@ -7297,9 +7341,10 @@
                 });
             }
 
-            // Lightcaster RADIANT phase bonus (+15% roll speed)
-            if (isLightcasterEquipped() && lightcasterBuffActive && lightcasterBuffRollsRemaining > 0) {
-                speed += 0.15;
+            // Lightcaster/Chromatic Crusher phase roll-speed bonus
+            const casterProfile = getCasterProfile();
+            if (casterProfile && lightcasterBuffActive && lightcasterBuffRollsRemaining > 0) {
+                speed += casterProfile.phaseRollSpeedBonus;
             }
 
             // Omega Drive OVERDRIVE phase bonus (+50% roll speed)
@@ -10497,7 +10542,7 @@
             if (currentBiome.name === 'GLITCHED') {
                 // Start glitch text interval if not already running
                 if (!window.glitchTextInterval) {
-                    const glitchChars = '01#$%^&*!@<>[]{}|/\\~`±§¶•ªº¿¡×÷≠≈∞∑∏';
+                    const glitchChars = '01#$%^&*!@<>[]{}|/\\~`+-=*/!?';
                     window.glitchTextInterval = setInterval(() => {
                         const biomeEl = document.querySelector('.biome');
                         if (!biomeEl || currentBiome.name !== 'GLITCHED') {
@@ -10853,7 +10898,7 @@
             return matchesCurrentBiome(aura.biomeExclusive);
         }
 
-        function getAuraEffectiveChance(aura, playerLuck) {
+        function getAuraEffectiveChanceWithLuck(aura, playerLuck) {
             // 1. Check exclusivity/unrollable
             if (aura.unrollable) return 0;
             if (!passesBiomeExclusiveRule(aura)) return 0;
@@ -10926,8 +10971,10 @@
             if (window.forcedNextRollAura) {
                 const forcedAura = window.forcedNextRollAura;
                 window.forcedNextRollAura = null; // Clear it after use
-                console.log(`[FORCE ROLL] Forcing aura: ${forcedAura.name} (1 in ${forcedAura.chance.toLocaleString()})`);
-                showNotification(`🎯 Forced: ${forcedAura.name}!`, forcedAura.color || '#00cec9');
+                if (window.DEBUG_LOGS) {
+                    console.log(`[FORCE ROLL] Forcing aura: ${forcedAura.name} (1 in ${forcedAura.chance.toLocaleString()})`);
+                }
+                showNotification(`Forced: ${forcedAura.name}!`, forcedAura.color || '#00cec9');
                 return forcedAura;
             }
 
@@ -10938,7 +10985,7 @@
                 totalLuck = axisBuff.stats.axisLuck;
             } else {
                 // OFFICIAL SOL'S RNG FORMULA:
-                // Total Luck = ((1 + Basic Buffs) × Bonus Roll + Special Buffs) × VIP
+                // Total Luck = ((1 + Basic Buffs) * Bonus Roll + Special Buffs) * VIP
                 totalLuck = calculateLuckFromFormula(baseLuckMultiplier, oneTimeStats, true);
 
                 // Unfathomable Ruins: Every 1000th roll grants x100 Luck for 10 rolls
@@ -10972,7 +11019,9 @@
                 }
             }
 
-            console.log(`[ROLL] TOTAL LUCK: ${totalLuck.toLocaleString(undefined, { maximumFractionDigits: 1 })} | Multiplier: x${baseLuckMultiplier}`);
+            if (window.DEBUG_LOGS) {
+                console.log(`[ROLL] TOTAL LUCK: ${totalLuck.toLocaleString(undefined, { maximumFractionDigits: 1 })} | Multiplier: x${baseLuckMultiplier}`);
+            }
 
             // 1. Initial filter for basic roll conditions
             const validAuras = AURAS.filter(aura => {
@@ -10991,17 +11040,21 @@
 
             // DEBUG: Log what's happening with potion auras
             if (oneTimeStats) {
-                console.log(`[DEBUG POTION] oneTimeStats:`, oneTimeStats);
-                console.log(`[DEBUG POTION] sourceId: ${oneTimeStats.sourceId}`);
-                console.log(`[DEBUG POTION] unlockAuras:`, oneTimeStats.unlockAuras);
-                console.log(`[DEBUG POTION] ignoreLuckAuras found: ${ignoreLuckAuras.length}`, ignoreLuckAuras.map(a => `${a.name} (${a.id})`));
+                if (window.DEBUG_LOGS) {
+                    console.log(`[DEBUG POTION] oneTimeStats:`, oneTimeStats);
+                    console.log(`[DEBUG POTION] sourceId: ${oneTimeStats.sourceId}`);
+                    console.log(`[DEBUG POTION] unlockAuras:`, oneTimeStats.unlockAuras);
+                    console.log(`[DEBUG POTION] ignoreLuckAuras found: ${ignoreLuckAuras.length}`, ignoreLuckAuras.map(a => `${a.name} (${a.id})`));
+                }
             }
 
             for (const aura of ignoreLuckAuras) {
                 // Roll with pure chance (no luck applied)
                 const roll = Math.random();
                 const threshold = 1 / aura.chance;
-                console.log(`[DEBUG ROLL] Testing ${aura.name}: roll=${roll.toFixed(6)}, threshold=${threshold.toFixed(6)}, hit=${roll < threshold}`);
+                if (window.DEBUG_LOGS) {
+                    console.log(`[DEBUG ROLL] Testing ${aura.name}: roll=${roll.toFixed(6)}, threshold=${threshold.toFixed(6)}, hit=${roll < threshold}`);
+                }
                 if (roll < threshold) {
                     console.log(`[ROLL SUCCESS - IGNORE LUCK] ${aura.name} | 1 in ${aura.chance.toLocaleString()}`);
                     return aura;
@@ -11011,7 +11064,9 @@
             // DEBUG: If skipToSpecialAuras is enabled and we have ignoreLuck auras available,
             // skip the normal waterfall and return Nothing (so we only see special aura hits)
             if (userSettings.debug?.skipToSpecialAuras && ignoreLuckAuras.length > 0) {
-                console.log(`[DEBUG] Skip mode active - no special aura hit this roll`);
+                if (window.DEBUG_LOGS) {
+                    console.log(`[DEBUG] Skip mode active - no special aura hit this roll`);
+                }
                 return AURAS.find(a => a.id === 'nothing') || AURAS[0];
             }
 
@@ -11125,7 +11180,7 @@
                 chanceEl.innerHTML = `<span style="color: #e056fd; font-size: 12px; display: block; font-style: italic;">${aura.displayRarity}</span>1 in ${oneInX.toLocaleString()}`;
             } else if (native) {
                 // Show native indicator if applicable
-                chanceEl.innerHTML = `<span style="color: #2ecc71; font-size: 10px; display: block;">★ NATIVE ★</span>1 in ${oneInX.toLocaleString()}`;
+                chanceEl.innerHTML = `<span style="color: #2ecc71; font-size: 10px; display: block;">* NATIVE *</span>1 in ${oneInX.toLocaleString()}`;
             } else {
                 chanceEl.textContent = `1 in ${oneInX.toLocaleString()}`;
             }
@@ -11138,7 +11193,9 @@
 
             // Apply gradient if specified, otherwise use solid color
             if (aura.gradient) {
-                console.log('[GRADIENT DEBUG] Applying gradient for:', aura.name, aura.gradient);
+                if (window.DEBUG_LOGS) {
+                    console.log('[GRADIENT DEBUG] Applying gradient for:', aura.name, aura.gradient);
+                }
 
                 // Remove gradient classes first
                 nameEl.classList.remove('has-gradient', 'has-gradient-outline');
@@ -11209,7 +11266,9 @@
 
                 nameEl.style.cssText = cleanedStyles + gradientStyles;
 
-                console.log('[GRADIENT DEBUG] Applied cssText:', nameEl.style.cssText);
+                if (window.DEBUG_LOGS) {
+                    console.log('[GRADIENT DEBUG] Applied cssText:', nameEl.style.cssText);
+                }
             } else {
                 // Remove gradient classes and reset styles
                 nameEl.classList.remove('has-gradient', 'has-gradient-outline');
@@ -11324,6 +11383,42 @@
             return playerInventory.equipped.left === 'lightcaster' || playerInventory.equipped.right === 'lightcaster';
         }
 
+        // Check if Chromatic Crusher is equipped
+        function isChromaticCrusherEquipped() {
+            return playerInventory.equipped.left === 'chromatic-crusher' || playerInventory.equipped.right === 'chromatic-crusher';
+        }
+
+        // Returns caster behavior profile when either Lightcaster or Chromatic Crusher is equipped.
+        function getCasterProfile() {
+            if (isChromaticCrusherEquipped()) {
+                return {
+                    mode: 'crusher',
+                    threshold: 2,
+                    normalBonusLuck: 5,
+                    phaseLuck: 6,
+                    phaseBonusLuck: 12,
+                    phaseTriggerRolls: 10,
+                    phaseDurationRolls: 12,
+                    phaseRollSpeedBonus: 0.25,
+                    phaseLabel: 'PRISMATIC'
+                };
+            }
+            if (isLightcasterEquipped()) {
+                return {
+                    mode: 'lightcaster',
+                    threshold: 3,
+                    normalBonusLuck: 3.5,
+                    phaseLuck: 4,
+                    phaseBonusLuck: 8,
+                    phaseTriggerRolls: 15,
+                    phaseDurationRolls: 10,
+                    phaseRollSpeedBonus: 0.15,
+                    phaseLabel: 'RADIANT'
+                };
+            }
+            return null;
+        }
+
         // Check if Omega Drive is equipped
         function isOmegaDriveEquipped() {
             return playerInventory.equipped.left === 'omega-drive' || playerInventory.equipped.right === 'omega-drive';
@@ -11388,9 +11483,10 @@
             updateRollCount();
         }
 
-        // Get the bonus roll threshold (3 with Lightcaster, 5 with Darkshader, 6 with Blessed Tide, 10 default)
+        // Get the bonus roll threshold (2 with Chromatic Crusher, 3 with Lightcaster, 5 with Darkshader, 6 with Blessed Tide, 10 default)
         function getBonusRollThreshold() {
-            if (isLightcasterEquipped()) return 3;
+            const casterProfile = getCasterProfile();
+            if (casterProfile) return casterProfile.threshold;
             if (playerInventory.equipped.left === 'blessed-tide-gauntlet') return 6;
             return isDarkshaderEquipped() ? 5 : 10;
         }
@@ -11476,7 +11572,13 @@
         }
 
         // Play video cutscene for ultra-rare auras
-        function playVideoCutscene(aura, callback) {
+        function playVideoCutscene(aura, callback, forcePlay = false) {
+            // Respect global cutscene settings unless explicitly force-testing from admin.
+            if (!forcePlay && !shouldShowCutscene(aura)) {
+                if (callback) callback();
+                return;
+            }
+
             // Pause biome effects to improve performance
             if (window.pauseBiomeEffects) window.pauseBiomeEffects();
 
@@ -12314,17 +12416,17 @@
                 ? isPotionCutsceneAura(auraId)
                 : (typeof isSpecialPotionAura === 'function' ? isSpecialPotionAura(auraId) : false);
 
-            // If "Only Potion Auras" setting is enabled, only show cutscenes for special potion auras.
-            if (userSettings.debug?.onlyPotionAuraCutscenes) {
-                return potionCutsceneAura;
-            }
-
             // Global rarity gate for cutscenes (applies to quick roll and normal roll).
             const effectiveChance = aura ? getAuraEffectiveChance(aura) : 0;
-            const passesRarityGate = potionCutsceneAura ||
+            const passesRarityGate =
                 !userSettings.rolling.skipCutsceneEnabled ||
                 effectiveChance >= userSettings.rolling.skipCutsceneRarity;
             if (!passesRarityGate) return false;
+
+            // If "Only Potion Auras" setting is enabled, only show cutscenes for potion-linked auras.
+            if (userSettings.debug?.onlyPotionAuraCutscenes) {
+                return potionCutsceneAura;
+            }
 
             // "Play New Aura Cutscene" means repeats are hidden by default.
             // Exception: high-rarity rolls that pass the cutscene rarity gate should still play.
@@ -12915,37 +13017,45 @@
                         if (typeof updateDarkshaderVignette === 'function') updateDarkshaderVignette(true);
                     }
                 }
-            } else if (isLightcasterEquipped()) {
-                // Lightcaster bonus roll logic (upgraded Darkshader)
-                const hasLightcaster = true;
+            } else if (getCasterProfile()) {
+                // Lightcaster/Chromatic Crusher bonus roll logic
+                const casterProfile = getCasterProfile();
                 if (isBonusRoll) {
                     playerStats.bonusRollsHit++;
                     if (lightcasterBuffActive && lightcasterBuffRollsRemaining > 0) {
-                        luck = 8; // x8 during RADIANT bonus roll
+                        luck = casterProfile.phaseBonusLuck; // boosted bonus luck during active phase
                     } else {
-                        luck = 3.5; // x3.5 normal bonus roll
+                        luck = casterProfile.normalBonusLuck;
                     }
                 } else if (lightcasterBuffActive && lightcasterBuffRollsRemaining > 0) {
-                    luck = 4; // x4 during RADIANT phase
+                    luck = casterProfile.phaseLuck;
                 } else {
-                    luck = 1 + 2.5; // Base +2.5 luck from gear stats
+                    luck = casterProfile.normalBonusLuck; // keeps caster gloves strong even outside bonus rolls
                 }
 
-                // Lightcaster Phase Logic
+                // Caster phase logic
                 if (lightcasterBuffActive && lightcasterBuffRollsRemaining > 0) {
                     lightcasterBuffRollsRemaining--;
                     if (lightcasterBuffRollsRemaining <= 0) {
                         lightcasterBuffActive = false;
-                        showNotification('Radiant phase ended!', '#f1c40f');
+                        if (casterProfile.mode === 'crusher') {
+                            showNotification('Prismatic phase ended!', '#ff66cc');
+                        } else {
+                            showNotification('Radiant phase ended!', '#f1c40f');
+                        }
                         if (typeof updateLightcasterVignette === 'function') updateLightcasterVignette(false);
                     }
                 } else {
                     lightcasterRollTracker++;
-                    if (lightcasterRollTracker >= 15) {
+                    if (lightcasterRollTracker >= casterProfile.phaseTriggerRolls) {
                         lightcasterRollTracker = 0;
                         lightcasterBuffActive = true;
-                        lightcasterBuffRollsRemaining = 10;
-                        showNotification('RADIANT! x4 Luck + 15% Speed for 10 rolls!', '#ffd700');
+                        lightcasterBuffRollsRemaining = casterProfile.phaseDurationRolls;
+                        if (casterProfile.mode === 'crusher') {
+                            showNotification('PRISMATIC! x6 Luck + 25% Speed for 12 rolls!', '#ff66cc');
+                        } else {
+                            showNotification('RADIANT! x4 Luck + 15% Speed for 10 rolls!', '#ffd700');
+                        }
                         if (typeof updateLightcasterVignette === 'function') updateLightcasterVignette(true);
                     }
                 }
@@ -12999,10 +13109,10 @@
 
 
             // --- CONSUME ONE-TIME BUFFS ---
-            // Only consume ONE buff per roll (they queue up for multiple rolls)
+            // Consume only ONE queued one-time buff per roll.
+            // This allows multi-use queueing without stacking buff strength.
             let aggregatedOneTimeStats = null;
             if (userSettings.rolling.buffsEnabled && oneTimeBuffs.length > 0) {
-                // Take only the FIRST buff from the queue
                 aggregatedOneTimeStats = normalizeOneTimeStats(oneTimeBuffs.shift());
                 updateBuffsHUD();
             }
@@ -13194,29 +13304,6 @@
                     if (Math.random() < 0.1) addMaterial('Gear Basing');
                     recordRoll(tempFinalAura, aggregatedOneTimeStats);
                     startCooldown(150);
-                    return;
-                }
-
-                if (filterStatus !== 'keep' && userSettings.rolling.skipCutsceneEnabled && auraChance < userSettings.rolling.skipCutsceneRarity) {
-                    updateDisplay(tempFinalAura, true);
-
-                    addMaterial(tempFinalAura.name);
-                    if (Math.random() < 0.1) addMaterial('Gear Basing');
-                    recordRoll(tempFinalAura, aggregatedOneTimeStats);
-
-                    // Handle auto-equip/keep for skip as well
-                    if (filterStatus === 'keep') {
-                        currentEquippedAura = tempFinalAura;
-                        updateEquippedDisplay();
-                    } else if (userSettings.rolling.autoEquipEnabled && auraChance >= userSettings.rolling.autoEquipRarity) {
-                        tryAutoEquipAura(tempFinalAura, 'Auto Equip');
-                    }
-
-                    // --- NATURAL POTION SPAWNS (Cutscene Skip) ---
-                    if (Math.random() < 0.2) addPotion('lucky_potion', 1);
-                    if (Math.random() < 0.1) addPotion('speed_potion', 1);
-
-                    startCooldown(1000);
                     return;
                 }
 
@@ -13474,18 +13561,17 @@
 
             const threshold = getBonusRollThreshold();
             const hasDarkshader = isDarkshaderEquipped();
-            const hasLightcaster = isLightcasterEquipped();
+            const casterProfile = getCasterProfile();
+            const hasLightcaster = !!casterProfile;
 
             if (rollCounter === threshold) {
                 if (hasLightcaster) {
                     if (lightcasterBuffActive && lightcasterBuffRollsRemaining > 0) {
-                        // RADIANT bonus roll = 8x
-                        countElement.textContent = "X8 LUCK READY";
-                        countElement.style.color = "#ffffff"; // White for radiant
+                        countElement.textContent = `X${casterProfile.phaseBonusLuck} LUCK READY`;
+                        countElement.style.color = "#ffffff";
                     } else {
-                        // Normal Lightcaster bonus roll = 3.5x
-                        countElement.textContent = "X3.5 LUCK READY";
-                        countElement.style.color = "#ffd700"; // Gold
+                        countElement.textContent = `X${casterProfile.normalBonusLuck} LUCK READY`;
+                        countElement.style.color = casterProfile.mode === 'crusher' ? "#ff66cc" : "#ffd700";
                     }
                 } else if (hasDarkshader) {
                     if (darkshaderBuffActive && darkshaderBuffRollsRemaining > 0) {
@@ -13509,13 +13595,13 @@
             } else {
                 const displayText = `${rollCounter}/${threshold}`;
                 countElement.textContent = displayText;
-                // White during RADIANT, purple during ENCROACHED, gold otherwise
+                // White during caster active phase, purple during ENCROACHED, gold otherwise
                 if (hasLightcaster && lightcasterBuffActive && lightcasterBuffRollsRemaining > 0) {
                     countElement.style.color = "#ffffff";
                 } else if (hasDarkshader && darkshaderBuffActive && darkshaderBuffRollsRemaining > 0) {
                     countElement.style.color = "#e056fd";
                 } else {
-                    countElement.style.color = "#ffd700";
+                    countElement.style.color = (hasLightcaster && casterProfile.mode === 'crusher') ? "#ff66cc" : "#ffd700";
                 }
             }
         }
@@ -13585,14 +13671,20 @@
             }
         }
 
-        // Lightcaster yellow/white vignette effect for RADIANT phase
+        // Lightcaster/Chromatic Crusher vignette effect for caster phase
         function updateLightcasterVignette(active) {
-            let container = document.getElementById('lightcaster-container');
+            const casterProfile = getCasterProfile();
+            const isCrusher = casterProfile && casterProfile.mode === 'crusher';
+            const containerId = isCrusher ? 'chromatic-crusher-container' : 'lightcaster-container';
+            const oldContainerId = isCrusher ? 'lightcaster-container' : 'chromatic-crusher-container';
 
+            const oldContainer = document.getElementById(oldContainerId);
+            if (oldContainer) oldContainer.remove();
+
+            let container = document.getElementById(containerId);
             if (!container) {
-                // Create container for fade transition
                 container = document.createElement('div');
-                container.id = 'lightcaster-container';
+                container.id = containerId;
                 container.style.cssText = `
                     position: fixed;
                     top: 0;
@@ -13605,23 +13697,38 @@
                     transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
                 `;
 
-                // Inner vignette with yellow/white gradient and pulse animation
                 const vignette = document.createElement('div');
-                vignette.style.cssText = `
-                    width: 100%;
-                    height: 100%;
-                    background: radial-gradient(ellipse at center, 
-                        transparent 35%, 
-                        rgba(255, 255, 200, 0.12) 50%,
-                        rgba(255, 215, 0, 0.20) 70%, 
-                        rgba(255, 255, 255, 0.35) 100%);
-                    animation: lightcaster-pulse 1.5s ease-in-out infinite;
-                `;
+                if (isCrusher) {
+                    vignette.style.cssText = `
+                        width: 100%;
+                        height: 100%;
+                        background:
+                            radial-gradient(ellipse at center,
+                                transparent 34%,
+                                rgba(255, 255, 255, 0.08) 52%,
+                                rgba(255, 60, 60, 0.23) 70%,
+                                rgba(80, 255, 120, 0.25) 84%,
+                                rgba(80, 140, 255, 0.34) 100%);
+                        mix-blend-mode: screen;
+                        filter: saturate(2.2) contrast(1.22);
+                        animation: chromatic-rgb-hueshift 0.28s linear infinite, chromatic-rgb-vignette-pulse 0.18s steps(2, end) infinite;
+                    `;
+                } else {
+                    vignette.style.cssText = `
+                        width: 100%;
+                        height: 100%;
+                        background: radial-gradient(ellipse at center, 
+                            transparent 35%, 
+                            rgba(255, 255, 200, 0.12) 50%,
+                            rgba(255, 215, 0, 0.20) 70%, 
+                            rgba(255, 255, 255, 0.35) 100%);
+                        animation: lightcaster-pulse 1.5s ease-in-out infinite;
+                    `;
+                }
 
                 container.appendChild(vignette);
                 document.body.appendChild(container);
 
-                // Add keyframes if not already added
                 if (!document.getElementById('lightcaster-keyframes')) {
                     const style = document.createElement('style');
                     style.id = 'lightcaster-keyframes';
@@ -13633,17 +13740,30 @@
                     `;
                     document.head.appendChild(style);
                 }
+
+                if (!document.getElementById('chromatic-crusher-keyframes')) {
+                    const style = document.createElement('style');
+                    style.id = 'chromatic-crusher-keyframes';
+                    style.textContent = `
+                        @keyframes chromatic-rgb-hueshift {
+                            0% { filter: saturate(2.2) contrast(1.22) hue-rotate(0deg); }
+                            100% { filter: saturate(2.2) contrast(1.22) hue-rotate(360deg); }
+                        }
+                        @keyframes chromatic-rgb-vignette-pulse {
+                            0%, 100% { opacity: 0.74; }
+                            50% { opacity: 0.98; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
             }
 
             if (active) {
-                // Ensure it's in the DOM/visible before fading
                 container.style.display = 'block';
-                // Force reflow
                 container.offsetHeight;
                 container.style.opacity = '1';
             } else {
                 container.style.opacity = '0';
-                // Do not set display none immediately to allow fade out
             }
         }
 
@@ -13850,6 +13970,7 @@
         function toggleAdminPanel() {
             const panel = document.getElementById('admin-panel');
             const rollOverlay = document.getElementById('roll-overlay');
+            updateAdminChromaticEffect();
             panel.classList.toggle('active');
             if (panel.classList.contains('active')) {
                 if (rollOverlay) rollOverlay.style.visibility = 'hidden';
@@ -14062,7 +14183,7 @@
             if (typeof playVideoCutscene === 'function') {
                 playVideoCutscene(aura, () => {
                     showNotification('Cutscene test complete!', '#2ecc71');
-                });
+                }, true);
             } else {
                 showNotification('Cutscene system not available', '#ff6b6b');
             }
@@ -14558,7 +14679,7 @@
                 // Calculate current total luck using OFFICIAL formula
                 const currentRollSpeed = calculateTotalRollSpeed();
 
-                // Calculate the final values using official formula: ((1 + Basic) × Bonus + Special) × VIP
+                // Calculate the final values using official formula: ((1 + Basic) * Bonus + Special) * VIP
                 // For snapshot, we use current bonus roll state and no special buff
                 const snapshotLuck = calculateLuckFromFormula(currentBonusRollMultiplier, null, false);
                 const snapshotSpeed = currentRollSpeed;
@@ -14582,17 +14703,17 @@
                     isAxis: true // Flag to identify this special buff
                 };
 
-                showNotification(`53_Axis activated! ${snapshotLuck.toFixed(1)}x luck → ${(snapshotLuck * 2).toFixed(1)}x for 5 rolls!`, '#ff00ff');
+                showNotification(`53_Axis activated! ${snapshotLuck.toFixed(1)}x luck -> ${(snapshotLuck * 2).toFixed(1)}x for 5 rolls!`, '#ff00ff');
                 if (clearedBuffs > 0) {
                     showNotification(`Disabled ${clearedBuffs} buff(s)`, '#ff6b6b');
                 }
 
             } else if (potion.type === 'one_time') {
                 // Stacking rules per Sols RNG wiki:
-                // - Godlike, Heavenly, and Potion of Bound CAN stack (multiple in queue)
-                // - Oblivion and Pump King's Blood CANNOT stack (only 1 at a time)
+                // - One-time buffs can queue and combine for next roll
+                // - Pump King's Blood remains non-stackable
 
-                const nonStackablePotions = ['oblivion_potion', 'pump_kings_blood'];
+                const nonStackablePotions = ['pump_kings_blood'];
 
                 if (nonStackablePotions.includes(potion.id)) {
                     // Check if already in queue
@@ -14605,13 +14726,19 @@
                     }
                 }
 
+                if (oneTimeBuffs.length >= MAX_ONE_TIME_BUFF_QUEUE) {
+                    playerInventory.potions[potionId]++;
+                    showNotification(`One-time queue limit reached (${MAX_ONE_TIME_BUFF_QUEUE}).`, '#e67e22');
+                    return;
+                }
+
                 // Add to one-time queue
                 oneTimeBuffs.push({
                     name: potion.name,
                     stats: potion.stats,
                     sourceId: potion.id
                 });
-                showNotification(`${potion.name} ready for next roll!`, '#e056fd');
+                showNotification(`${potion.name} queued (${oneTimeBuffs.length}) for next roll!`, '#e056fd');
             } else {
                 // Duration or Roll Duration
                 // Stacking Logic: "Same potion types don't stack... Duration can stack"
@@ -14687,8 +14814,8 @@
                         activeBuffs[potion.id].duration += (potion.duration || potion.durationRolls);
                     }
                 } else if (potion.type === 'one_time') {
-                    // Check non-stackable potions (Oblivion, Pump King's Blood)
-                    const nonStackablePotions = ['oblivion_potion', 'pump_kings_blood'];
+                    // Check non-stackable one-time potions
+                    const nonStackablePotions = ['pump_kings_blood'];
                     if (nonStackablePotions.includes(potion.id)) {
                         const alreadyQueued = oneTimeBuffs.some(buff => buff.sourceId === potion.id);
                         if (alreadyQueued) {
@@ -14696,6 +14823,12 @@
                             playerInventory.potions[potionId]++;
                             break;
                         }
+                    }
+
+                    if (oneTimeBuffs.length >= MAX_ONE_TIME_BUFF_QUEUE) {
+                        // Refund and stop batch to prevent excessive memory/DOM/save load
+                        playerInventory.potions[potionId]++;
+                        break;
                     }
 
                     oneTimeBuffs.push({
@@ -14944,6 +15077,31 @@
             return tile;
         }
 
+        function createBuffSummaryTile(label, color = '#95a5a6') {
+            const tile = document.createElement('div');
+            tile.className = 'active-buff-tile';
+            tile.style.setProperty('--buff-accent', color);
+            tile.title = label;
+
+            const icon = document.createElement('i');
+            icon.className = 'fa-solid fa-layer-group active-buff-icon';
+            icon.setAttribute('aria-hidden', 'true');
+            tile.appendChild(icon);
+
+            const timer = document.createElement('span');
+            timer.className = 'active-buff-time';
+            timer.textContent = 'INFO';
+            tile.appendChild(timer);
+
+            const count = document.createElement('span');
+            count.className = 'active-buff-stack';
+            count.textContent = label;
+            tile.appendChild(count);
+
+            addBuffCornerBrackets(tile);
+            return tile;
+        }
+
         function updateBuffsHUD() {
             let container = document.getElementById('active-buffs-container');
             if (!container) {
@@ -14956,18 +15114,48 @@
             }
 
             container.innerHTML = '';
+            const hideHud = !!userSettings?.rolling?.hideAllBuffs;
+            if (hideHud) {
+                container.style.display = 'none';
+                return;
+            }
 
-            // Render Timed/Roll Buffs
-            Object.values(activeBuffs).forEach(buff => {
-                container.appendChild(createBuffTile(buff));
-            });
+            const timedBuffs = Object.values(activeBuffs);
+            const queuedBuffs = oneTimeBuffs;
+            const totalBuffCount = timedBuffs.length + queuedBuffs.length;
 
-            // Render One-Time Buffs
-            oneTimeBuffs.forEach(buff => {
-                container.appendChild(createBuffTile(buff, true));
-            });
+            if (totalBuffCount === 0) {
+                container.style.display = 'none';
+                return;
+            }
 
-            container.style.display = container.children.length ? 'flex' : 'none';
+            // Hard safety guard: avoid generating massive buff DOM trees.
+            if (totalBuffCount > 250) {
+                container.appendChild(createBuffSummaryTile(`${totalBuffCount} active`, '#e67e22'));
+                container.style.display = 'flex';
+                return;
+            }
+
+            const maxTiles = userSettings?.performance?.maxFpsMode ? 20 : 80;
+            const fragment = document.createDocumentFragment();
+            let rendered = 0;
+
+            for (let i = 0; i < timedBuffs.length && rendered < maxTiles; i++) {
+                fragment.appendChild(createBuffTile(timedBuffs[i]));
+                rendered++;
+            }
+
+            for (let i = 0; i < queuedBuffs.length && rendered < maxTiles; i++) {
+                fragment.appendChild(createBuffTile(queuedBuffs[i], true));
+                rendered++;
+            }
+
+            container.appendChild(fragment);
+            const hiddenCount = totalBuffCount - rendered;
+            if (hiddenCount > 0) {
+                container.appendChild(createBuffSummaryTile(`+${hiddenCount} more`, '#f39c12'));
+            }
+            container.style.display = 'flex';
         }
 
         function formatTime(seconds) {
@@ -14992,6 +15180,7 @@
             const elSkipCutsceneVal = document.getElementById('set-skip-cutscene-val');
             const elSkipCutsceneToggle = document.getElementById('set-skip-cutscene-toggle');
             const elBuffsEnabled = document.getElementById('set-buffs-enabled');
+            const elHideAllBuffs = document.getElementById('set-hide-buffs-hud');
             const elStorageWarning = document.getElementById('set-storage-warning');
             const elPlayCutscene = document.getElementById('set-play-cutscene');
             if (elSkipWarnVal) elSkipWarnVal.value = userSettings.rolling.skipWarnRarity.toLocaleString();
@@ -15005,9 +15194,11 @@
             if (elSkipCutsceneVal) elSkipCutsceneVal.value = userSettings.rolling.skipCutsceneRarity.toLocaleString();
             if (elSkipCutsceneToggle) elSkipCutsceneToggle.checked = userSettings.rolling.skipCutsceneEnabled;
             if (elBuffsEnabled) elBuffsEnabled.checked = userSettings.rolling.buffsEnabled;
+            if (elHideAllBuffs) elHideAllBuffs.checked = !!userSettings.rolling.hideAllBuffs;
             if (elStorageWarning) elStorageWarning.checked = userSettings.rolling.storageWarning;
             if (elPlayCutscene) elPlayCutscene.checked = userSettings.rolling.playNewAuraCutscene;
             updateRollingSettingStatusLabels();
+            updateBuffsHUD();
         }
 
         function getTierColor(tier) {
@@ -15030,6 +15221,45 @@
             document.querySelectorAll('.settings-tab-content').forEach(content => {
                 content.style.display = content.id === `tab-${tabName}` ? 'block' : 'none';
             });
+        }
+
+        function toggleMenu() {
+            const panel = document.getElementById('menu-panel');
+            const overlay = document.querySelector('.menu-overlay');
+            const rollOverlay = document.getElementById('roll-overlay');
+            if (panel) panel.classList.toggle('active');
+            if (overlay) overlay.classList.toggle('active');
+            if (panel && panel.classList.contains('active')) {
+                if (rollOverlay) rollOverlay.style.visibility = 'hidden';
+            } else {
+                if (rollOverlay) rollOverlay.style.visibility = 'visible';
+            }
+        }
+
+        function toggleSettingsPanel() {
+            const panel = document.getElementById('settings-panel');
+            const rollOverlay = document.getElementById('roll-overlay');
+            if (!panel) return;
+            panel.classList.toggle('active');
+            if (panel.classList.contains('active')) {
+                if (rollOverlay) rollOverlay.style.visibility = 'hidden';
+            } else {
+                if (rollOverlay) rollOverlay.style.visibility = 'visible';
+            }
+        }
+
+        function toggleInventoryPanel() {
+            const panel = document.getElementById('inventory-panel');
+            const rollOverlay = document.getElementById('roll-overlay');
+            if (!panel) return;
+            panel.classList.toggle('active');
+            if (panel.classList.contains('active')) {
+                populateInventory();
+                updateInventoryEquippedSlots();
+                if (rollOverlay) rollOverlay.style.visibility = 'hidden';
+            } else {
+                if (rollOverlay) rollOverlay.style.visibility = 'visible';
+            }
         }
 
         function toggleWorkshopPanel() {
@@ -15387,6 +15617,9 @@
                 item.addEventListener('click', () => selectPotion(potion));
                 list.appendChild(item);
             });
+
+            // Also show chest/material inventory entries without overriding potion crafting UI.
+            appendWorkshopChestAndMaterials(list, searchQuery);
         }
 
         function selectPotion(potion) {
@@ -15438,7 +15671,7 @@
                     // Add header
                     const header = document.createElement('div');
                     header.style.cssText = 'padding: 10px; color: #f39c12; font-weight: bold; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 10px;';
-                    header.textContent = '📜 Required Materials';
+                    header.textContent = 'Required Materials';
                     materialsList.appendChild(header);
 
                     const entries = Object.entries(potion.recipe);
@@ -15594,157 +15827,7 @@
                 }
             }
         }
-
-        function toggleMenu() {
-            const panel = document.getElementById('menu-panel');
-            const overlay = document.getElementById('menu-overlay');
-            panel.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-
-        function toggleMenu() {
-            const panel = document.getElementById('menu-panel');
-            const overlay = document.querySelector('.menu-overlay');
-            const rollOverlay = document.getElementById('roll-overlay');
-            if (panel) panel.classList.toggle('active');
-            if (overlay) overlay.classList.toggle('active');
-            if (panel && panel.classList.contains('active')) {
-                if (rollOverlay) rollOverlay.style.visibility = 'hidden';
-            } else {
-                if (rollOverlay) rollOverlay.style.visibility = 'visible';
-            }
-        }
-
-        function toggleSettingsPanel() {
-            const panel = document.getElementById('settings-panel');
-            const rollOverlay = document.getElementById('roll-overlay');
-            panel.classList.toggle('active');
-            if (panel.classList.contains('active')) {
-                if (rollOverlay) rollOverlay.style.visibility = 'hidden';
-            } else {
-                if (rollOverlay) rollOverlay.style.visibility = 'visible';
-            }
-        }
-
-        // Achievements Logic
-        function toggleAchievementsPanel() {
-            const panel = document.getElementById('achievements-panel');
-            const menuPanel = document.getElementById('menu-panel');
-            const rollOverlay = document.getElementById('roll-overlay');
-
-            if (menuPanel.classList.contains('active')) {
-                menuPanel.classList.remove('active');
-                document.querySelector('.menu-overlay').classList.remove('active');
-            }
-
-            panel.classList.toggle('visible');
-
-            if (panel.classList.contains('visible')) {
-                populateAchievements();
-                updateAchievementStats();
-                if (rollOverlay) rollOverlay.style.visibility = 'hidden';
-            } else {
-                if (rollOverlay) rollOverlay.style.visibility = 'visible';
-            }
-        }
-
-        function populateAchievements(category = 'all') {
-            const list = document.getElementById('achievements-list');
-            if (!list || typeof ACHIEVEMENTS === 'undefined') return;
-
-            list.innerHTML = '';
-
-            const filteredAchievements = category === 'all'
-                ? ACHIEVEMENTS
-                : ACHIEVEMENTS.filter(a => a.category === category);
-
-            filteredAchievements.forEach(achievement => {
-                const isCompleted = isAchievementUnlocked(achievement.id, playerAchievements);
-
-                const item = document.createElement('div');
-                item.className = `achievement-item ${isCompleted ? 'completed' : 'locked'}`;
-
-                const categoryInfo = ACHIEVEMENT_CATEGORIES[achievement.category];
-                const rewardsText = formatRewards(achievement.rewards);
-
-                item.innerHTML = `
-                    <div class="achievement-item-icon" style="color: ${categoryInfo.color}">
-                        ${categoryInfo.icon}
-                    </div>
-                    <div class="achievement-item-info">
-                        <div class="achievement-item-name" style="${isCompleted ? 'color: #f39c12;' : ''}">
-                            ${achievement.name}
-                        </div>
-                        <div class="achievement-item-desc">${achievement.description}</div>
-                        ${isCompleted ?
-                        `<div style="font-size: 11px; color: #2ecc71; margin-top: 5px;">Completed on ${new Date(playerAchievements.completed[achievement.id]).toLocaleDateString()}</div>` :
-                        `<div class="achievement-item-rewards">Rewards: ${rewardsText}</div>`
-                    }
-                    </div>
-                    <div class="achievement-item-status">
-                        ${isCompleted ? '✓' : '🔒'}
-                    </div>
-                `;
-
-                list.appendChild(item);
-            });
-        }
-
-        function updateAchievementStats() {
-            if (typeof ACHIEVEMENTS === 'undefined') return;
-
-            // Update stats
-            const totalAchievements = ACHIEVEMENTS.length;
-            const completedCount = Object.keys(playerAchievements.completed).length;
-            document.getElementById('achievements-count').textContent = `${completedCount}/${totalAchievements}`;
-
-            // Playtime
-            const hours = Math.floor(playerAchievements.playtimeSeconds / 3600);
-            const minutes = Math.floor((playerAchievements.playtimeSeconds % 3600) / 60);
-            document.getElementById('total-playtime').textContent = `${hours}h ${minutes}m`;
-
-            // Titles
-            document.getElementById('achievements-title-count').textContent = playerAchievements.unlockedTitles.length;
-
-            // Categories
-            const categoriesContainer = document.getElementById('achievements-categories');
-            categoriesContainer.innerHTML = '<button class="achievement-category-btn active" data-category="all">All</button>';
-
-            Object.entries(ACHIEVEMENT_CATEGORIES).forEach(([key, info]) => {
-                const btn = document.createElement('button');
-                btn.className = 'achievement-category-btn';
-                btn.dataset.category = key;
-                btn.textContent = info.name; // Use short name or icon?
-                btn.innerHTML = `${info.icon} ${info.name}`;
-                categoriesContainer.appendChild(btn);
-            });
-
-            // Add listeners to category buttons
-            document.querySelectorAll('.achievement-category-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    document.querySelectorAll('.achievement-category-btn').forEach(b => b.classList.remove('active'));
-                    e.currentTarget.classList.add('active');
-                    populateAchievements(e.currentTarget.dataset.category);
-                });
-            });
-        }
-
-        function toggleInventoryPanel() {
-            const panel = document.getElementById('inventory-panel');
-            const rollOverlay = document.getElementById('roll-overlay');
-            panel.classList.toggle('active');
-            if (panel.classList.contains('active')) {
-                populateInventory();
-                updateInventoryEquippedSlots();
-                // Hide roll overlay when modal is open
-                if (rollOverlay) rollOverlay.style.visibility = 'hidden';
-            } else {
-                // Show roll overlay when modal is closed
-                if (rollOverlay) rollOverlay.style.visibility = 'visible';
-            }
-        }
-
-        function getAuraStorageCapacityForLevel(level = 0) {
+function getAuraStorageCapacityForLevel(level = 0) {
             return AURA_STORAGE_BASE_CAPACITY + (Math.max(0, level) * AURA_STORAGE_CAPACITY_STEP);
         }
 
@@ -16726,6 +16809,16 @@
             }
         }
 
+        
+function updateAdminChromaticEffect() {
+            const adminInner = document.querySelector('.admin-panel-inner');
+            const adminTitle = document.querySelector('.admin-title');
+            if (!adminInner) return;
+            const active = isChromaticCrusherEquipped();
+            adminInner.classList.toggle('chromatic-crusher-rgb', active);
+            if (adminTitle) adminTitle.classList.toggle('chromatic-crusher-rgb-text', active);
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('roll-button').addEventListener('click', performRoll);
             document.getElementById('auto-roll').addEventListener('click', toggleAutoRoll);
@@ -17026,7 +17119,8 @@
                 { id: 'set-play-cutscene', path: 'rolling.playNewAuraCutscene', type: 'check' },
                 { id: 'vol-bgm', path: 'audio.bgm', type: 'int' },
                 { id: 'vol-sfx', path: 'audio.sfx', type: 'int' },
-                { id: 'set-buffs-enabled', path: 'rolling.buffsEnabled', type: 'check' }
+                { id: 'set-buffs-enabled', path: 'rolling.buffsEnabled', type: 'check' },
+                { id: 'set-hide-buffs-hud', path: 'rolling.hideAllBuffs', type: 'check' }
             ];
 
             settingMappings.forEach(mapping => {
@@ -17050,6 +17144,9 @@
                     }
                     if (mapping.path.startsWith('rolling.')) {
                         updateRollingSettingStatusLabels();
+                    }
+                    if (mapping.id === 'set-hide-buffs-hud' || mapping.id === 'set-buffs-enabled') {
+                        updateBuffsHUD();
                     }
                 });
             });
@@ -17103,7 +17200,7 @@
             if (statsToggle && statsContent) {
                 statsToggle.addEventListener('click', () => {
                     statsContent.classList.toggle('collapsed');
-                    statsToggle.textContent = statsContent.classList.contains('collapsed') ? '+' : '−';
+                    statsToggle.textContent = statsContent.classList.contains('collapsed') ? '+' : '-';
                 });
             }
 
@@ -17193,8 +17290,8 @@
                 monitor.id = 'perf-monitor';
                 monitor.innerHTML = `
                     <div class="perf-title">
-                        <span>⚡ PERFORMANCE</span>
-                        <span class="perf-close" onclick="PerfMonitor.toggle()">✕</span>
+                        <span>PERFORMANCE</span>
+                        <span class="perf-close" onclick="PerfMonitor.toggle()">X</span>
                     </div>
                     <div class="perf-row">
                         <span class="perf-label">FPS:</span>
@@ -17221,14 +17318,14 @@
                         <span id="perf-dom" class="perf-value">0</span>
                     </div>
                     <div class="perf-graph" id="perf-graph"></div>
-                    <button id="perf-maxfps-btn" class="perf-maxfps-btn" onclick="toggleMaxFpsMode()">⚡ Max FPS: OFF</button>
+                    <button id="perf-maxfps-btn" class="perf-maxfps-btn" onclick="toggleMaxFpsMode()">Max FPS: OFF</button>
                 `;
                 document.body.appendChild(monitor);
 
                 // Create toggle button
                 const toggleBtn = document.createElement('button');
                 toggleBtn.className = 'perf-toggle-btn';
-                toggleBtn.textContent = '📊 Perf';
+                toggleBtn.textContent = 'Perf';
                 toggleBtn.onclick = () => PerfMonitor.toggle();
                 document.body.appendChild(toggleBtn);
 
@@ -17246,7 +17343,7 @@
                         toggleMaxFpsMode();
                         // Update button text
                         const btn = document.getElementById('perf-maxfps-btn');
-                        if (btn) btn.textContent = `⚡ Max FPS: ${userSettings.performance.maxFpsMode ? 'ON' : 'OFF'}`;
+                        if (btn) btn.textContent = `Max FPS: ${userSettings.performance.maxFpsMode ? 'ON' : 'OFF'}`;
                     }
                     if (e.key === 'F11') {
                         e.preventDefault();
@@ -17594,7 +17691,7 @@
             }
 
             // Current Luck - using OFFICIAL SOL'S RNG FORMULA:
-            // ((1 + Basic Buffs) × Bonus Roll + Special Buffs) × VIP
+            // ((1 + Basic Buffs) * Bonus Roll + Special Buffs) * VIP
             const luckEl = document.getElementById('stat-luck');
             if (luckEl) {
                 const vipMultiplier = getVIPMultiplier();
@@ -18031,7 +18128,7 @@
                 const content = document.getElementById('aura-log-content');
                 if (content) {
                     content.classList.toggle('collapsed');
-                    auraLogToggle.textContent = content.classList.contains('collapsed') ? '+' : '−';
+                    auraLogToggle.textContent = content.classList.contains('collapsed') ? '+' : '-';
                 }
             });
         }
@@ -18091,116 +18188,12 @@
             const biomeDisplayEl = document.getElementById('aura-log-biome-display');
             if (biomeDisplayEl && currentBiome) {
                 if (currentBiome.name !== 'NORMAL') {
-                    biomeDisplayEl.innerHTML = `<span style="color: ${currentBiome.color || '#888'};">🌍 ${currentBiome.name}</span>`;
+                    biomeDisplayEl.innerHTML = `<span style="color: ${currentBiome.color || '#888'};">Biome: ${currentBiome.name}</span>`;
                 } else {
                     biomeDisplayEl.innerHTML = '';
                 }
             }
         }
-
-        // --- Admin Event Listeners ---
-        // Ensure elements exist before attaching to avoid errors if run early, though this is end of body.
-        const adminGiveMatBtn = document.getElementById('admin-give-material');
-        if (adminGiveMatBtn) {
-            adminGiveMatBtn.addEventListener('click', giveAdminMaterial);
-        }
-
-        const adminSetRollsBtn = document.getElementById('admin-update-rolls');
-        if (adminSetRollsBtn) {
-            adminSetRollsBtn.addEventListener('click', () => {
-                const input = document.getElementById('admin-set-rolls');
-                if (!input) return;
-                // Parse int allowing for commas if user enters them
-                const val = parseInt(input.value.replace(/,/g, ''));
-                if (!isNaN(val) && val >= 0) {
-                    playerStats.totalRolls = val;
-                    updateRollCount();
-                    updateStatsPanel();
-                    showNotification(`Total rolls set to ${val.toLocaleString()}`, '#ff00ff');
-                    // Check if we unlock anything? Not automatically triggered usually, but that's fine.
-                    input.value = '';
-                } else {
-                    showNotification('Invalid number', '#ff6b6b');
-                }
-            });
-        }
-
-        // Populate cutscene list in admin panel
-        function populateAdminCutscenes() {
-            const container = document.getElementById('admin-cutscene-list');
-            if (!container) return;
-
-            container.innerHTML = '';
-
-            // Get all auras with video cutscenes
-            const aurasWithCutscenes = AURAS.filter(a => hasVideoCutscene(a.id));
-
-            if (aurasWithCutscenes.length === 0) {
-                container.innerHTML = '<div style="padding: 10px; color: rgba(255,255,255,0.5); text-align: center;">No cutscenes available yet</div>';
-                return;
-            }
-
-            aurasWithCutscenes.forEach(aura => {
-                const btn = document.createElement('button');
-                btn.classList.add('admin-gear-btn');
-                btn.textContent = aura.name;
-                btn.style.color = aura.color || '#fff';
-                btn.style.borderColor = aura.color || '#fff';
-                btn.style.fontFamily = aura.fontFamily || "'Sarpanch', sans-serif";
-                btn.addEventListener('click', () => {
-                    playVideoCutscene(aura, () => {
-                        showNotification(`Cutscene for ${aura.name} completed!`, aura.color || '#2ecc71');
-                    });
-                });
-                container.appendChild(btn);
-            });
-        }
-
-        // Test cutscene button
-        const adminTestCutsceneBtn = document.getElementById('admin-test-cutscene');
-        if (adminTestCutsceneBtn) {
-            adminTestCutsceneBtn.addEventListener('click', () => {
-                const input = document.getElementById('admin-cutscene-aura');
-                if (!input) return;
-
-                const auraId = input.value.trim().toLowerCase();
-                if (!auraId) {
-                    showNotification('Enter an aura ID!', '#ff6b6b');
-                    return;
-                }
-
-                const aura = AURAS.find(a => a.id === auraId);
-                if (!aura) {
-                    showNotification(`Aura "${auraId}" not found!`, '#ff6b6b');
-                    return;
-                }
-
-                if (hasVideoCutscene(aura.id)) {
-                    playVideoCutscene(aura, () => {
-                        showNotification(`Cutscene for ${aura.name} completed!`, aura.color || '#2ecc71');
-                    });
-                } else if (hasTextCutscene(aura.id)) {
-                    playTextCutscene(aura, () => {
-                        showNotification(`Text cutscene for ${aura.name} completed!`, aura.color || '#2ecc71');
-                    });
-                } else {
-                    showNotification(`No cutscene (video or text) for ${aura.name}`, '#ff6b6b');
-                    return;
-                }
-
-                input.value = '';
-            });
-        }
-
-        // Populate cutscene list when debug tab is opened
-        const originalSwitchTab = switchTab;
-        switchTab = function (tabName) {
-            originalSwitchTab(tabName);
-            if (tabName === 'debug') {
-                populateAdminCutscenes();
-            }
-        };
-
         // --- Force Roll Functionality ---
         let selectedForceRollAura = null;
 
@@ -18290,7 +18283,7 @@
                 if (rollOverlay) rollOverlay.style.visibility = 'visible';
 
                 // Notify user
-                showNotification(`🎯 Next roll queued: ${aura.name}`, aura.color || '#00cec9');
+                showNotification(`Next roll queued: ${aura.name}`, aura.color || '#00cec9');
                 showNotification(`Click ROLL to trigger it!`, '#ffd700');
 
                 // Reset selection
@@ -18312,8 +18305,8 @@
                 if (onComplete) onComplete();
             };
 
-            // Check if user skips cutscenes
-            if (userSettings.rolling.skipCutsceneEnabled && aura.chance <= userSettings.rolling.skipCutsceneRarity) {
+            // Use the global cutscene gate to keep text/video behavior consistent.
+            if (!shouldShowCutscene(aura)) {
                 wrappedOnComplete();
                 return;
             }
@@ -20214,7 +20207,7 @@
                 // === ANOTHER REALM: FAST CHAOTIC TRANSITIONS - EVERY LINE! ===
                 {
                     line: 0, action: () => {
-                        // "WHAT—" - IMMEDIATE chaos
+                        // "WHAT-" - IMMEDIATE chaos
                         if (window.realmEffects) {
                             window.realmEffects.shake(30, 20);
                             window.realmEffects.flash('#ff00ff');
@@ -20236,7 +20229,7 @@
                 },
                 {
                     line: 2, action: () => {
-                        // "CAN'T—"
+                        // "CAN'T-"
                         if (window.realmEffects) {
                             window.realmEffects.flash('#00ffff');
                             window.realmEffects.setTear(0.5);
@@ -20247,7 +20240,7 @@
                 },
                 {
                     line: 3, action: () => {
-                        // "EVERYTHING IS—"
+                        // "EVERYTHING IS-"
                         if (window.realmEffects) {
                             window.realmEffects.invert();
                             window.realmEffects.glitchBurst();
@@ -20285,7 +20278,7 @@
                 },
                 {
                     line: 6, action: () => {
-                        // "WHICH WAY IS—"
+                        // "WHICH WAY IS-"
                         if (window.realmEffects) {
                             window.realmEffects.shake(80, 70);
                             window.realmEffects.setGlitch(1);
@@ -20320,7 +20313,7 @@
                 },
                 {
                     line: 9, action: () => {
-                        // "THIS ISN'T—"
+                        // "THIS ISN'T-"
                         if (window.realmEffects) {
                             window.realmEffects.invert();
                             window.realmEffects.invert();
@@ -20359,7 +20352,7 @@
                 },
                 {
                     line: 12, action: () => {
-                        // FINAL: "「 A N O T H E R   R E A L M 」" - MAXIMUM CHAOS then calm
+                        // FINAL: "ANOTHER REALM" - MAXIMUM CHAOS then calm
                         if (window.realmEffects) {
                             // Rapid fire effects
                             for (let i = 0; i < 5; i++) {
@@ -20820,7 +20813,7 @@
     </script>
     <!-- Chest Opening Overlay -->
     <div id="chest-overlay" class="chest-overlay">
-        <div id="chest-visual" class="chest-visual">📦</div>
+        <div id="chest-visual" class="chest-visual">BOX</div>
         <div id="chest-loot" class="chest-loot"></div>
     </div>
 
@@ -20977,16 +20970,18 @@
 
     <script>
         // --- Chests Logic ---
-        function populateWorkshopItems() {
-            const list = document.getElementById('workshop-list');
+        function appendWorkshopChestAndMaterials(list, searchQuery = '') {
             if (!list) return;
-            list.innerHTML = '';
-
             // 1. Chests
             Object.entries(playerInventory.chests || {}).forEach(([id, count]) => {
                 if (count <= 0) return;
                 const type = CHEST_TYPES[id];
                 if (!type) return;
+                if (searchQuery) {
+                    const term = searchQuery.toLowerCase();
+                    const haystack = `${type.name} ${type.description}`.toLowerCase();
+                    if (!haystack.includes(term)) return;
+                }
 
                 const item = document.createElement('div');
                 item.classList.add('workshop-list-item');
@@ -21003,6 +20998,7 @@
             // 2. Materials
             Object.entries(playerInventory.materials || {}).forEach(([name, count]) => {
                 if (count <= 0) return;
+                if (searchQuery && !name.toLowerCase().includes(searchQuery.toLowerCase())) return;
                 const item = document.createElement('div');
                 item.classList.add('workshop-list-item');
                 item.innerHTML = `
@@ -21194,7 +21190,7 @@
                 el.className = 'loot-item';
                 el.style.animationDelay = `${index * 0.05}s`; // Faster stagger
                 el.innerHTML = `
-                     <div style="font-size: 18px;">🧪</div>
+                     <div style="font-size: 18px;">Flask</div>
                      <div class="loot-name" style="color: ${getTierColor(potion.rarity)}">${potion.name}</div>
                      <div class="loot-count" style="background: ${getTierColor(potion.rarity)}22; padding: 2px 6px; border-radius: 8px;">x${count}</div>
                  `;
@@ -21229,32 +21225,21 @@
             setTimeout(() => {
                 visual.style.display = 'block';
                 visual.style.transform = 'scale(1)';
-                visual.textContent = '📦';
+                visual.textContent = 'BOX';
                 if (btn) btn.style.display = 'none';
                 document.getElementById('chest-loot').innerHTML = '';
             }, 300);
         }
 
-        // Ensure workshop tab switching works
-        document.addEventListener('DOMContentLoaded', () => {
-            const tabs = document.querySelectorAll('.workshop-tab');
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Deactivate all
-                    tabs.forEach(t => t.classList.remove('active'));
-                    // Activate click
-                    tab.classList.add('active');
-
-                    // Populate
-                    if (tab.dataset.tab === 'items') {
-                        populateWorkshopItems();
-                    } else {
-                        if (typeof populateWorkshopGears === 'function') populateWorkshopGears();
-                    }
-                });
-            });
-        });
     </script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
