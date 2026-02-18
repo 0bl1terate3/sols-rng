@@ -11142,7 +11142,17 @@
             };
 
             // 3. Prepare the Pool (Calculated Once)
-            const normalAuras = validAuras.filter(a => !a.ignoreLuck);
+            const isPotionRollInLimbo =
+                normalizeEnvKey(currentBiome?.name) === 'LIMBO' &&
+                oneTimeStats &&
+                typeof oneTimeStats.sourceId === 'string' &&
+                oneTimeStats.sourceId.length > 0;
+
+            const normalAuras = validAuras.filter(a => {
+                if (a.ignoreLuck) return false;
+                if (isPotionRollInLimbo && a.id === 'nothing') return false;
+                return true;
+            });
             const auraPool = normalAuras.map(aura => {
                 const isNative = isAuraNative(aura, allowRainy);
                 let baseChance = (isNative && aura.nativeChance) ? aura.nativeChance : aura.chance;
