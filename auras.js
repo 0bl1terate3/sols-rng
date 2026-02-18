@@ -16,7 +16,7 @@ const AURAS = [
 
   // --- Common Tier (1/1 to 1/8) ---
 
-  { id: 'nothing', name: "Nothing", chance: 1, color: '#2c3e50', textColor: '#ffffff', gradient: 'linear-gradient(135deg, #2c3e50, #7f8c8d)', fontFamily: "'Open Sans', sans-serif" },
+  { id: 'nothing', name: "Nothing", chance: 1, biomeExclusive: 'LIMBO', color: '#2c3e50', textColor: '#ffffff', gradient: 'linear-gradient(135deg, #2c3e50, #7f8c8d)', fontFamily: "'Open Sans', sans-serif" },
 
   { id: 'common', name: "Common", chance: 2, color: '#0000ff', textColor: '#ffffff', gradient: 'linear-gradient(135deg, #0000ff, #7f8c8d)', fontFamily: "'Mulish', sans-serif" },
 
@@ -25,6 +25,28 @@ const AURAS = [
   { id: 'good', name: "Good", chance: 5, color: '#e74c3c', textColor: '#ffffff', gradient: 'linear-gradient(135deg, #e74c3c, #7f8c8d)', fontFamily: "'Outfit', sans-serif" },
 
   { id: 'natural', name: "Natural", chance: 8, nativeChance: 2, biome: 'JUNGLE', nativeBiome: 'jungle', color: '#2c3e50', textColor: '#ffffff', gradient: 'linear-gradient(135deg, #2c3e50, #7f8c8d)', fontFamily: "'Neucha', cursive" },
+  
+  // === COMMON-TIER SYNONYM AURAS ===
+
+{ id: 'ordinary', name: "Ordinary", chance: 2, color: '#1f4fff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#1f4fff,#7f8c8d)', fontFamily: "'Mulish', sans-serif" },
+
+{ id: 'standard', name: "Standard", chance: 2, color: '#2a5bff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#2a5bff,#95a5a6)', fontFamily: "'Mulish', sans-serif" },
+
+{ id: 'typical', name: "Typical", chance: 3, color: '#3b6cff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#3b6cff,#7f8c8d)', fontFamily: "'Raleway', sans-serif" },
+
+{ id: 'basic', name: "Basic", chance: 2, color: '#0048cc', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#0048cc,#7f8c8d)', fontFamily: "'Outfit', sans-serif" },
+
+{ id: 'average', name: "Average", chance: 3, color: '#4a78ff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#4a78ff,#bdc3c7)', fontFamily: "'Open Sans', sans-serif" },
+
+{ id: 'regular', name: "Regular", chance: 2, color: '#2850ff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#2850ff,#7f8c8d)', fontFamily: "'Mulish', sans-serif" },
+
+{ id: 'baseline', name: "Baseline", chance: 3, color: '#3f66ff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#3f66ff,#95a5a6)', fontFamily: "'Raleway', sans-serif" },
+
+{ id: 'routine', name: "Routine", chance: 2, color: '#355dff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#355dff,#7f8c8d)', fontFamily: "'Outfit', sans-serif" },
+
+{ id: 'plain', name: "Plain", chance: 3, color: '#5c7cff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#5c7cff,#bdc3c7)', fontFamily: "'Open Sans', sans-serif" },
+
+{ id: 'default', name: "Default", chance: 2, color: '#2448ff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#2448ff,#7f8c8d)', fontFamily: "'Mulish', sans-serif" },
 
 
 
@@ -100,9 +122,13 @@ const AURAS = [
 
   { id: 'glacier', name: "Glacier", chance: 2304, nativeChance: 768, weather: 'snowy', color: '#87ceeb', textColor: '#ffffff', gradient: 'linear-gradient(135deg, #87ceeb, #4682b4)', fontFamily: "'Nunito', sans-serif" },
 
+  { id: 'glacier_tundra', name: "Glacier : Tundra", chance: 230400, nativeChance: 76800, weather: 'snowy', color: '#6fa3d2', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#6fa3d2,#1f4f7a)', fontFamily: "'Nunito', sans-serif" },
+
   { id: 'player', name: "PLAYER", chance: 3000, nativeChance: 1500, weather: 'cyberspace', color: '#ffd700', textColor: '#000000', gradient: 'linear-gradient(135deg, #ffd700, #ffb347)', fontFamily: "'Share Tech Mono', monospace" },
 
   { id: 'apatite', name: "Apatite", chance: 3133133, color: '#2f80ed', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#2f80ed,#56ccf2)', fontFamily: "'Sarpanch', sans-serif" },
+
+  { id: 'apatite_cerulean', name: "Apatite : Cerulean", chance: 31331330, color: '#1f6fe5', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#1f6fe5,#2bb2ff)', fontFamily: "'Sarpanch', sans-serif" },
 
   { id: 'flora', name: "Flora", chance: 3700, nativeChance: 740, biome: 'JUNGLE', nativeBiome: 'jungle', color: '#228b22', textColor: '#ffffff', gradient: 'linear-gradient(135deg, #228b22, #32cd32)', fontFamily: "'Caveat', cursive" },
 
@@ -129,6 +155,8 @@ const AURAS = [
   { id: 'nautilus', name: "Nautilus", chance: 70000, nativeChance: 17500, biome: 'DEEP SEA', nativeBiome: 'deep sea', color: '#4682b4', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#4682b4,#191970)', fontFamily: "'Cabin', sans-serif" },
 
   { id: 'permafrost', name: "Permafrost", chance: 73500, nativeChance: 24500, weather: 'snowy', color: '#b0e0e6', textColor: '#000000', gradient: 'linear-gradient(135deg,#b0e0e6,#87ceeb)', fontFamily: "'Jost', sans-serif" },
+
+  { id: 'permafrost_bedrock', name: "Permafrost : Bedrock", chance: 7350000, nativeChance: 2450000, weather: 'snowy', color: '#8d96a0', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#8d96a0,#3f4750)', fontFamily: "'Jost', sans-serif" },
 
   { id: 'flow', name: "✿ Flow ✿", chance: 87000, nativeChance: 29000, biome: 'JUNGLE', nativeBiome: 'jungle', weather: 'windy', color: '#98fb98', textColor: '#000000', gradient: 'linear-gradient(135deg,#98fb98,#90ee90)', fontFamily: "'Delius', cursive" },
 
@@ -160,6 +188,10 @@ const AURAS = [
 
   { id: 'jade', name: "Jade", chance: 125000, nativeChance: 25000, biome: 'JUNGLE', nativeBiome: 'jungle', color: '#00a86b', textColor: '#ffffff', gradient: 'linear-gradient(135deg, #00a86b, #2e8b57)', fontFamily: "'Nunito Sans', sans-serif" },
 
+  { id: 'jade_rainroot', name: "Jade : Rainroot", chance: 1250000, nativeChance: 250000, biome: 'JUNGLE', nativeBiome: 'jungle', weather: 'rainy', color: '#1f8f6d', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#1f8f6d,#3fbf8f)', fontFamily: "'Nunito Sans', sans-serif" },
+
+  { id: 'jade_primeval', name: "⟢ Jade : Primeval ⟣", chance: 125000000, color: '#0e5c45', textColor: '#e8ffe9', gradient: 'linear-gradient(135deg,#0e5c45,#6fd08b)', fontFamily: "'Cinzel Decorative', serif" },
+
   { id: 'spectre', name: "Spectre", chance: 140000, color: '#9370db', textColor: '#ffffff', gradient: 'linear-gradient(135deg, #9370db, #8a2be2)', fontFamily: "'Quantico', sans-serif" },
 
   { id: 'jazz', name: "Jazz", chance: 160000, color: '#4b0082', textColor: '#ffffff', gradient: 'linear-gradient(135deg, #4b0082, #6a5acd)', fontFamily: "'Mona Sans', sans-serif" },
@@ -180,9 +212,15 @@ const AURAS = [
 
   { id: 'hope', name: "HOPE", chance: 488725, nativeChance: 97745, weather: 'heaven', color: '#eafff5', textColor: '#000000', gradient: 'linear-gradient(135deg,#eafff5,#7fffd4)', fontFamily: "'Forum', sans-serif" },
 
-  { id: 'raven', name: "Raven", chance: 500000, color: '#0f172a', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#0f172a,#2f4f4f)', fontFamily: "'IM Fell English SC', serif" },
+  { id: 'hope_halcyon', name: "✶ HOPE : HALCYON ✶", chance: 301117029, nativeChance: 60223405, weather: 'heaven', color: '#d9fff0', textColor: '#0f2e1f', gradient: 'linear-gradient(135deg,#d9fff0,#67d8b7)', fontFamily: "'Forum', sans-serif" },
+
+  { id: 'raven', name: "Raven", chance: 500000, biomeExclusive: 'LIMBO', color: '#0f172a', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#0f172a,#2f4f4f)', fontFamily: "'IM Fell English SC', serif" },
+
+  { id: 'raven_nevermore', name: "『 Raven : Nevermore 』", chance: 50000000, color: '#10061f', textColor: '#e8e0ff', gradient: 'linear-gradient(135deg,#05050a,#2a1b44)', fontFamily: "'UnifrakturCook', serif" },
 
   { id: 'warlock', name: "Warlock", chance: 666000, color: '#2b003f', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#2b003f,#6a0dad)', fontFamily: "'Special Elite', sans-serif" },
+
+  { id: 'warlock_hexbound', name: "⛧ Warlock : Hexbound ⛧", chance: 166600000, color: '#15001f', textColor: '#f6e7ff', gradient: 'linear-gradient(135deg,#15001f,#4a1a6d)', fontFamily: "'Cinzel Decorative', serif" },
 
   { id: 'undead_devil', name: "UNDEAD : DEVIL", chance: 666666, nativeChance: 111111, weather: 'hell', color: '#2b0000', textColor: '#ff2a2a', gradient: 'linear-gradient(135deg,#2b0000,#8b0000)', fontFamily: "'Averia Gruesa Libre', sans-serif" },
 
@@ -192,7 +230,11 @@ const AURAS = [
 
   { id: 'solar', name: "Solar", chance: 50000, nativeChance: 5000, time: 'daytime', color: '#ffa500', textColor: '#000000', gradient: 'linear-gradient(135deg,#ffa500,#ff8c00)', fontFamily: "'DM Serif Display', serif" },
 
+  { id: 'solar_aurelion', name: "S☉LAR : AURELION", chance: 155000000, nativeChance: 15500000, time: 'daytime', color: '#ffe28a', textColor: '#2c1800', gradient: 'linear-gradient(135deg,#fff4bf,#ffb347)', fontFamily: "'Cinzel Decorative', serif" },
+
   { id: 'lunar', name: "Lunar", chance: 50000, nativeChance: 5000, biome: 'SAKURA', nativeBiome: 'sakura', time: 'nighttime', color: '#c0c0c0', textColor: '#000000', gradient: 'linear-gradient(135deg,#c0c0c0,#808080)', fontFamily: "'Prata', serif" },
+
+  { id: 'lunar_perigee', name: "『 LUNAR : PERIGEE 』", chance: 118903742, nativeChance: 23780748, biome: 'SAKURA', nativeBiome: 'sakura', time: 'nighttime', color: '#dfe6ff', textColor: '#1f2b4a', gradient: 'linear-gradient(135deg,#dfe6ff,#8da2ff)', fontFamily: "'Prata', serif" },
 
   { id: 'starlight_kunzite', name: "STARLIGHT : KUNZITE", chance: 1000000, nativeChance: 200000, weather: 'starfall', color: '#f2e9ff', textColor: '#3b1b6b', gradient: 'linear-gradient(135deg,#f2e9ff,#b39ddb)', fontFamily: "'Tektur', sans-serif" },
 
@@ -200,13 +242,15 @@ const AURAS = [
 
   { id: 'undefined', name: "Undefined", chance: 1111, nativeChance: 1111, weather: 'null', color: '#f5f5f5', textColor: '#000000', gradient: 'linear-gradient(135deg,#f5f5f5,#9e9e9e)', fontFamily: "'Iceland', sans-serif" },
 
+  { id: 'undefined_vacancy', name: "UNDEFINED :: VACANCY", chance: 222200000, nativeChance: 222200, weather: 'null', color: '#d9d9d9', textColor: '#111111', gradient: 'linear-gradient(135deg,#f3f3f3,#7c7c7c)', fontFamily: "'B612 Mono', monospace" },
+
   { id: 'rage_brawler', name: "Rage : Brawler", chance: 1280000, color: '#b00020', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#b00020,#ff1744)', fontFamily: "'Barlow Condensed', sans-serif" },
 
   { id: 'astral', name: "Astral", chance: 1336000, nativeChance: 267200, weather: 'starfall', color: '#6a5acd', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#6a5acd,#191970)', fontFamily: "'Lora', serif" },
 
   { id: 'cosmos', name: "Cosmos", chance: 1520000, color: '#050b2e', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#050b2e,#312e81)', fontFamily: "'Audiowide', sans-serif" },
 
-  { id: 'respawn', name: "Respawn", chance: 1999999, nativeChance: 999999, weather: 'cyberspace', color: '#00ffff', textColor: '#000000', gradient: 'linear-gradient(135deg,#00ffff,#003333)', fontFamily: "'Asap', sans-serif" },
+  { id: 'respawn', name: "Player : Respawn", chance: 1999999, nativeChance: 999999, weather: 'cyberspace', color: '#00ffff', textColor: '#000000', gradient: 'linear-gradient(135deg,#00ffff,#003333)', fontFamily: "'Asap', sans-serif" },
 
   { id: 'gravitational', name: "Gravitational", chance: 2000000, color: '#000000', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#000000,#434343)', fontFamily: "'Scada', sans-serif" },
 
@@ -222,7 +266,9 @@ const AURAS = [
 
   { id: 'shift_lock', name: "Shift lock", chance: 3325000, nativeChance: 3325, weather: 'null', color: '#5f6a72', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#5f6a72,#2c3e50)', fontFamily: "'Monoton', sans-serif" },
 
-  { id: 'alice', name: "《 Alice 》", chance: 3500000, color: '#ff9ad5', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#ff9ad5,#ff69b4)', fontFamily: "'Rum Raisin', sans-serif" },
+  { id: 'shift_lock_hardmode', name: "<< SHIFT LOCK / HARDMODE >>", chance: 253771942, nativeChance: 253771, weather: 'null', color: '#3a3f46', textColor: '#f3f3f3', gradient: 'linear-gradient(135deg,#121417,#5f6a72)', fontFamily: "'Monoton', sans-serif" },
+
+  { id: 'alice', name: "《 Cosmos: Alice 》", chance: 3500000, color: '#ff9ad5', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#ff9ad5,#ff69b4)', fontFamily: "'Rum Raisin', sans-serif" },
 
   { id: 'bejeweled', name: "Crystalized : Bejeweled", chance: 3600000, color: '#b300ff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#b300ff,#ffd700)', fontFamily: "'Maven Pro', sans-serif" },
 
@@ -232,6 +278,8 @@ const AURAS = [
 
   { id: 'metabytes', name: "METABYTES", chance: 4000000, nativeChance: 2000000, weather: 'cyberspace', color: '#00ffd5', textColor: '#000000', gradient: 'linear-gradient(135deg,#00ffd5,#004d4d)', fontFamily: "'Trispace', sans-serif" },
 
+  { id: 'metabytes_singularstack', name: "[ METABYTES : SINGULARSTACK ]", chance: 199870113, nativeChance: 99935056, weather: 'cyberspace', color: '#6fffe9', textColor: '#001414', gradient: 'linear-gradient(135deg,#6fffe9,#118ab2)', fontFamily: "'Trispace', sans-serif" },
+
   { id: 'zeus', name: "Zeus", chance: 4500000, color: '#ffd700', textColor: '#000000', gradient: 'linear-gradient(135deg,#ffd700,#ffae00)', fontFamily: "'Bangers', sans-serif" },
 
   { id: 'solar_solstice', name: "Solar : Solstice", chance: 5000000, nativeChance: 500000, time: 'daytime', color: '#ffae00', textColor: '#000000', gradient: 'linear-gradient(135deg,#ffae00,#fff2a8)', fontFamily: "'Bungee Spice', sans-serif" },
@@ -240,7 +288,7 @@ const AURAS = [
 
   { id: 'lunar_full_moon', name: "Lunar : Full Moon", chance: 5000000, nativeChance: 500000, biome: 'SAKURA', nativeBiome: 'sakura', time: 'nighttime', color: '#f0f0f0', textColor: '#000000', gradient: 'linear-gradient(135deg,#f0f0f0,#bdbdbd)', fontFamily: "'Stardos Stencil', sans-serif" },
 
-  { id: 'anima', name: "Anima", chance: 5730000, color: '#ff3cac', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#ff3cac,#784ba0)', fontFamily: "'Questrial', sans-serif" },
+  { id: 'anima', name: "Anima", chance: 5730000, biomeExclusive: 'LIMBO', color: '#ff3cac', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#ff3cac,#784ba0)', fontFamily: "'Questrial', sans-serif" },
 
   { id: 'twilight', name: "Twilight", chance: 6000000, nativeChance: 600000, biome: 'SAKURA', nativeBiome: 'sakura', time: 'nighttime', color: '#483d8b', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#483d8b,#1c1c3c)', fontFamily: "'Jacquarda Bastarda 9 Charted', sans-serif" },
 
@@ -268,6 +316,8 @@ const AURAS = [
 
   { id: 'outlaw', name: "OUTLAW", chance: 8000000, nativeChance: 2000000, weather: 'sandstorm', color: '#8b5a2b', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#8b5a2b,#cd853f)', fontFamily: "'Sulphur Point', sans-serif" },
 
+  { id: 'outlaw_deadeye', name: "OUTLAW : DEADEYE🞋", chance: 188000000, nativeChance: 47000000, weather: 'sandstorm', color: '#5a2e16', textColor: '#ffe7c4', gradient: 'linear-gradient(135deg,#2b1208,#b87333)', fontFamily: "'Special Elite', sans-serif" },
+
   { id: 'harnessed', name: "⌊ HARNESSED ⌉", chance: 8500000, color: '#e0e0e0', textColor: '#000000', gradient: 'linear-gradient(135deg,#e0e0e0,#9e9e9e)', fontFamily: "'Nobile', sans-serif" },
 
   { id: 'nihility', name: "[ Nihility ]", chance: 9000000, nativeChance: 9000, weather: 'null', color: '#111111', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#111111,#2f4f4f)', fontFamily: "'Sancreek', sans-serif" },
@@ -291,6 +341,10 @@ const AURAS = [
   { id: 'hurricane', name: "Hurricane", chance: 13500000, nativeChance: 4500000, weather: 'windy', color: '#2c3e50', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#2c3e50,#95a5a6)', fontFamily: "'Abel', sans-serif" },
 
   { id: 'sirius', name: "Sirius", chance: 14000000, nativeChance: 2800000, weather: 'starfall', color: '#eef3ff', textColor: '#000000', gradient: 'linear-gradient(135deg,#eef3ff,#9fb6ff)', fontFamily: "'Yanone Kaffeesatz', sans-serif" },
+
+  { id: 'sirius_dogstar', name: "《 SIRIUS / DOGSTAR 》", chance: 143992017, nativeChance: 28798403, weather: 'starfall', color: '#f2f7ff', textColor: '#1a2336', gradient: 'linear-gradient(135deg,#f2f7ff,#79a9ff)', fontFamily: "'Yanone Kaffeesatz', sans-serif" },
+
+  { id: 'parallax', name: "PARALLAX", chance: 132771406, nativeChance: 26554281, weather: 'starfall', color: '#8b6dff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#26154d,#8b6dff)', fontFamily: "'Rubik Maps', sans-serif" },
 
   { id: 'arcane_legacy', name: "A r c a n e : Legacy", chance: 15000000, color: '#2e003e', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#2e003e,#7b1fa2)', fontFamily: "'Rosarivo', serif" },
 
@@ -316,7 +370,7 @@ const AURAS = [
 
   { id: 'fatal_error', name: "FATAL ERROR", chance: 40413000, nativeChance: 20206500, weather: 'cyberspace', color: '#8b0000', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#8b0000,#ff0000)', fontFamily: "'Inria Sans', sans-serif" },
 
-  { id: 'j_u_x_t_a_p_o_s_i_t_i_o_n', name: "{ j u x t a p o s i t i o n }", chance: 40440400, color: '#5e005e', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#5e005e,#000000)', fontFamily: "'Gantari', sans-serif" },
+  { id: 'j_u_x_t_a_p_o_s_i_t_i_o_n', name: "{ j u x t a p o s i t i o n }", chance: 40440400, biomeExclusive: 'LIMBO', color: '#5e005e', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#5e005e,#000000)', fontFamily: "'Gantari', sans-serif" },
 
   { id: 'overseer', name: "Overseer", chance: 45000000, color: '#243b8a', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#243b8a,#5f7cff)', fontFamily: "'Rosario', sans-serif" },
 
@@ -344,6 +398,8 @@ const AURAS = [
 
   { id: 'virtual_worldwide', name: "Virtual : WorldWide", chance: 87500000, nativeChance: 43750000, weather: 'cyberspace', color: '#3b82f6', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#3b82f6,#001f54)', fontFamily: "'Rubik Dirt', sans-serif" },
 
+  { id: 'palimpsest', name: "PALIMPSEST", chance: 88888888, weather: 'null', excludeWeather: 'heaven', color: '#e7e0ff', textColor: '#1b1033', gradient: 'linear-gradient(135deg,#e7e0ff,#7a5cff,#0b0618)', fontFamily: "'IBM Plex Mono', monospace" },
+
   { id: 'nucleus', name: "[-] Atomic : Nucleus [+]", chance: 92118000, color: '#ff3b3b', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#ff3b3b,#ff9f43)', fontFamily: "'Jura', sans-serif" },
 
 
@@ -354,11 +410,15 @@ const AURAS = [
 
   { id: 'starscourge_radiant', name: "STARSCOURGE : RADIANT", chance: 100000000, nativeChance: 20000000, weather: 'starfall', color: '#fff700', textColor: '#000000', gradient: 'linear-gradient(135deg,#fff700,#ffae00)', fontFamily: "'Oldenburg', sans-serif" },
 
+  { id: 'starscourge_eventide', name: "✦ STARSCOURGE ✦ EVENTIDE ✦", chance: 142000000, nativeChance: 28400000, weather: 'starfall', color: '#5a4cff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#0a0618,#5a4cff)', fontFamily: "'Aladin', sans-serif" },
+
   { id: 'spectraflow', name: "◇ Spectraflow ◇", chance: 100000000, color: '#ff6bd6', textColor: '#000000', gradient: 'linear-gradient(135deg,#ff6bd6,#8a2be2)', fontFamily: "'Whisper', cursive" },
 
   { id: 'overture', name: "Overture", chance: 150000000, color: '#fff176', textColor: '#000000', gradient: 'linear-gradient(135deg,#fff176,#fbc02d)', fontFamily: "'Ysabeau', sans-serif" },
 
   { id: 'symphony', name: "Symphony", chance: 175000000, nativeChance: 43750000, biome: 'SAKURA', nativeBiome: 'sakura', color: '#1f2933', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#1f2933,#4b5563)', fontFamily: "'Imprima', sans-serif" },
+
+  { id: 'ironsong', name: "Ironsong", chance: 189604225, nativeChance: 37920845, biome: 'SAKURA', nativeBiome: 'sakura', color: '#7a8188', textColor: '#f4f4f4', gradient: 'linear-gradient(135deg,#3b4046,#9ea7b0)', fontFamily: "'Imprima', sans-serif" },
 
   { id: 'twilight_withering', name: "Twilight -Withering Grace", chance: 180000000, nativeChance: 18000000, time: 'nighttime', color: '#00bcd4', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#00bcd4,#004d60)', fontFamily: "'Nabla', sans-serif" },
 
@@ -406,7 +466,7 @@ const AURAS = [
 
   { id: 'apostolos', name: "APOSTOLOS", chance: 444000000, color: '#002bff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#002bff,#00b3ff)', fontFamily: "'Almendra', serif" },
 
-  { id: 'unknown_glorious', name: "⍰ unknown ⍰", chance: 444444444, color: '#1aff00', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#1aff00,#000000)', fontFamily: "'Wix Madefor Display', sans-serif" },
+  { id: 'unknown_glorious', name: "⍰ unknown ⍰", chance: 444444444, biomeExclusive: 'LIMBO', color: '#1aff00', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#1aff00,#000000)', fontFamily: "'Wix Madefor Display', sans-serif" },
 
   { id: 'kyawthuite_remembrance', name: "Kyawthuite : Remembrance", chance: 450000000, color: '#00e5ff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#00e5ff,#004d60)', fontFamily: "'Alegreya SC', serif" },
 
@@ -414,13 +474,15 @@ const AURAS = [
 
   { id: 'matrix_overdrive', name: "{♢ MATRIX /◆ OVERDRIVE ♢}", chance: 503000000, nativeChance: 251500000, weather: 'cyberspace', color: '#7f8c8d', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#7f8c8d,#00ff99)', fontFamily: "'Cutive Mono', monospace" },
 
-  { id: 'elude', name: "Elude", chance: 555555555, color: '#1abc9c', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#1abc9c,#0b5345)', fontFamily: "'Gruppo', sans-serif" },
+  { id: 'elude', name: "Elude", chance: 555555555, biomeExclusive: 'LIMBO', color: '#1abc9c', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#1abc9c,#0b5345)', fontFamily: "'Gruppo', sans-serif" },
 
   { id: 'sophyra', name: "Sophyra", chance: 570000000, color: '#1f3cff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#1f3cff,#00b3ff)', fontFamily: "'Average Sans', sans-serif" },
 
   { id: 'matrix_reality', name: "MATRIX ▫ REALITY", chance: 601020102, nativeChance: 300510051, weather: 'cyberspace', color: '#ffe600', textColor: '#000000', gradient: 'linear-gradient(135deg,#ffe600,#00ff66)', fontFamily: "'Libertinus Mono', monospace" },
 
-  { id: 'prologue', name: "PROLOGUE", chance: 666616111, color: '#00ff00', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#00ff00,#003300)', fontFamily: "'Belanosima', sans-serif" },
+  { id: 'breakpoint', name: "Breakpoint", chance: 179220641, weather: 'cyberspace', color: '#ff9f7a', textColor: '#1c0b05', gradient: 'linear-gradient(135deg,#3a1210,#ff9f7a)', fontFamily: "'Black Ops One', sans-serif" },
+
+  { id: 'prologue', name: "PROLOGUE", chance: 666616111, biomeExclusive: 'LIMBO', color: '#00ff00', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#00ff00,#003300)', fontFamily: "'Belanosima', sans-serif" },
 
   { id: 'pythios', name: "PYTHIOS", chance: 666666666, nativeChance: 111111111, weather: 'hell', color: '#ff00ff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#ff00ff,#5c005c)', fontFamily: "'Jockey One', sans-serif" },
 
@@ -430,7 +492,7 @@ const AURAS = [
 
   { id: 'aegis', name: "﴾AEGIS﴿", chance: 825000000, nativeChance: 412500000, weather: 'cyberspace', color: '#ff0000', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#ff0000,#330000)', fontFamily: "'Lexend Mega', sans-serif" },
 
-  { id: 'dreamscape', name: "dreamscape", chance: 850000000, color: '#e74c3c', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#e74c3c,#8e1b1b)', fontFamily: "'Fredoka', sans-serif" },
+  { id: 'dreamscape', name: "dreamscape", chance: 850000000, biomeExclusive: 'LIMBO', color: '#e74c3c', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#e74c3c,#8e1b1b)', fontFamily: "'Fredoka', sans-serif" },
 
   { id: 'dreammetric', name: "Dreammetric", chance: 320000000, weather: 'dreamspace', color: '#ff3b3b', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#ff3b3b,#5c0000)', fontFamily: "'Noto Sans Display', sans-serif" },
 
@@ -440,7 +502,9 @@ const AURAS = [
 
   { id: 'illusionary', name: "illusionary", chance: 10000000, biomeExclusive: 'CYBERSPACE', weather: 'cyberspace', ignoreLuck: true, color: '#4b7bec', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#4b7bec,#000000)', fontFamily: "'Kedebideri', sans-serif" },
 
-  { id: 'nyctophobia', name: "Ň̫̈Y̵̢̮̟̎Ç͍̲̉̕T̺͗̐Ǫ͍̱P̦H̴̫̒͏̤̮O̱̺̗̚B̷͎̱͘Į̗͈̻͊Ã͕̳͘", chance: 1011111010, color: '#000000', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#000000,#1a1a1a)', fontFamily: "'Be Vietnam Pro', sans-serif" },
+  { id: 'afterimage', name: "// AFTERIMAGE", chance: 176880331, nativeChance: 35376066, weather: 'cyberspace', color: '#a58cff', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#120a2f,#6d4cff)', fontFamily: "'Kedebideri', sans-serif" },
+
+  { id: 'nyctophobia', name: "Ň̫̈Y̵̢̮̟̎Ç͍̲̉̕T̺͗̐Ǫ͍̱P̦H̴̫̒͏̤̮O̱̺̗̚B̷͎̱͘Į̗͈̻͊Ã͕̳͘", chance: 1011111010, biomeExclusive: 'LIMBO', color: '#000000', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#000000,#1a1a1a)', fontFamily: "'Be Vietnam Pro', sans-serif" },
 
   { id: 'pixelation', name: "▣ PIXELATION ▣", chance: 1073741824, nativeChance: 536870912, weather: 'cyberspace', color: '#fff200', textColor: '#000000', gradient: 'linear-gradient(135deg,#fff200,#ff7f00)', fontFamily: "'Galdeano', sans-serif" },
 
@@ -507,6 +571,8 @@ const AURAS = [
   { id: 'pukeko', name: "pukeko", chance: 3198, color: '#00ff66', textColor: '#000000', gradient: 'linear-gradient(135deg,#00ff66,#003300)', fontFamily: "'Coiny', sans-serif" },
 
   { id: 'troll', name: ":Troll:", chance: 1000000, color: '#6a0dad', textColor: '#ffffff', gradient: 'linear-gradient(135deg,#6a0dad,#2c145a)', fontFamily: "'Ranchers', sans-serif" },
+
+  { id: 'toll', name: "⦗ T O L L ⦘", chance: 222000000, color: '#e3b695', textColor: '#0f0f0f', gradient: 'linear-gradient(135deg,#e3b695,#7b5a4a)', fontFamily: "'Cinzel', serif" },
 
   { id: 'onion', name: "Onion", chance: 8000000, color: '#d6ccff', textColor: '#000000', gradient: 'linear-gradient(135deg,#d6ccff,#6c5ce7)', fontFamily: "'Days One', sans-serif" },
 

@@ -137,7 +137,8 @@
         .dust-streak,
         .wind-streak,
         .sand-cloud,
-        .sakura-petal {
+        .sakura-petal,
+        .ink-drip {
             will-change: transform, opacity;
             transform: translateZ(0);
             contain: layout style paint;
@@ -1260,6 +1261,35 @@
             100% {
                 transform: translateY(110vh) translateX(20px);
                 opacity: 0.8;
+            }
+        }
+
+        /* LIMBO Ink Drips */
+        .ink-drip {
+            position: absolute;
+            top: -180px;
+            border-radius: 999px;
+            background: linear-gradient(to bottom,
+                    rgba(8, 8, 8, 0),
+                    rgba(0, 0, 0, 0.92) 25%,
+                    rgba(0, 0, 0, 1) 100%);
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+            animation: ink-drip-fall linear forwards;
+        }
+
+        @keyframes ink-drip-fall {
+            0% {
+                transform: translateY(0) scaleY(0.92);
+                opacity: 0;
+            }
+
+            12% {
+                opacity: 0.9;
+            }
+
+            100% {
+                transform: translateY(130vh) scaleY(1.08);
+                opacity: 0;
             }
         }
 
@@ -7184,6 +7214,7 @@
             { name: 'JUNGLE', chance: 1 / 12000, multiplier: 1, duration: 120, color: '#228B22' },
             // Rare Biomes
             { name: 'GLITCHED', chance: 1 / 30000, multiplier: 1, duration: 60, color: '#00ffaa', rollOnBiomeChange: true },
+            { name: 'LIMBO', chance: 1 / 1111111, multiplier: 1, duration: 120, color: '#0a0a0a' },
             { name: 'DREAMSPACE', chance: 1 / 3500000, multiplier: 1, duration: 60, color: '#ff6bcb' },
             { name: 'CYBERSPACE', chance: 1 / 5000, multiplier: 1, duration: 720, color: '#00d4ff', rollOnBiomeChange: true }, // 12 minutes, rolls only per biome change
             // Halloween 2025 Event Biomes
@@ -7538,7 +7569,7 @@
         function renderWeather() {
             if (window.isCutsceneActive) return;
             const container = document.getElementById('weather-container');
-            const validWeathers = ['RAINY', 'WINDY', 'SNOWY', 'SANDSTORM', 'HELL', 'AURORA', 'STARFALL', 'HEAVEN', 'CORRUPTION', 'NULL', 'DREAMSPACE', 'GLITCHED', 'BLOOD RAIN', 'GRAVEYARD', 'CYBERSPACE', 'JUNGLE', 'SAKURA', 'DEEP SEA'];
+            const validWeathers = ['RAINY', 'WINDY', 'SNOWY', 'SANDSTORM', 'HELL', 'AURORA', 'STARFALL', 'HEAVEN', 'CORRUPTION', 'NULL', 'DREAMSPACE', 'GLITCHED', 'BLOOD RAIN', 'GRAVEYARD', 'CYBERSPACE', 'JUNGLE', 'SAKURA', 'DEEP SEA', 'LIMBO'];
             const clearActiveWeather = () => {
                 container.innerHTML = '';
                 if (activeWeatherInterval) {
@@ -10511,6 +10542,21 @@
                     }
                 };
             }
+
+            // LIMBO - Black ink drip atmosphere
+            if (currentBiome.name === 'LIMBO' && !activeWeatherInterval) {
+                activeWeatherInterval = setInterval(() => {
+                    const drip = document.createElement('div');
+                    drip.classList.add('ink-drip');
+                    drip.style.left = (Math.random() * 106 - 3) + 'vw';
+                    drip.style.width = (3 + Math.random() * 8) + 'px';
+                    drip.style.height = (45 + Math.random() * 130) + 'px';
+                    drip.style.opacity = (0.35 + Math.random() * 0.55).toFixed(2);
+                    drip.style.animationDuration = (2.2 + Math.random() * 2.1) + 's';
+                    container.appendChild(drip);
+                    setTimeout(() => drip.remove(), 5200);
+                }, 70);
+            }
         }
 
         function updateHUD() {
@@ -10844,6 +10890,12 @@
                         document.body.appendChild(sunRaysContainer);
                     }
                 }
+            } else if (currentBiome.name === 'LIMBO') {
+                biomeOverlay.style.background = 'radial-gradient(ellipse at 50% 10%, rgba(28, 28, 28, 0.45) 0%, rgba(0, 0, 0, 0.82) 62%, rgba(0, 0, 0, 0.95) 100%)';
+                biomeOverlay.style.opacity = '0.78';
+                biomeOverlay.classList.add('active');
+                clearPumpkinEffects();
+                clearBlazingSunEffects();
             } else {
                 // Full screen color tint based on biome
                 const color = currentBiome.color;
@@ -10898,9 +10950,17 @@
             return matchesCurrentBiome(aura.biomeExclusive);
         }
 
+        function passesLimboAuraRule(aura) {
+            if (normalizeEnvKey(currentBiome?.name) !== 'LIMBO') return true;
+            if (!aura || !aura.biomeExclusive) return false;
+            const exclusives = Array.isArray(aura.biomeExclusive) ? aura.biomeExclusive : [aura.biomeExclusive];
+            return exclusives.some(entry => normalizeEnvKey(entry) === 'LIMBO');
+        }
+
         function getAuraEffectiveChanceWithLuck(aura, playerLuck) {
             // 1. Check exclusivity/unrollable
             if (aura.unrollable) return 0;
+            if (!passesLimboAuraRule(aura)) return 0;
             if (!passesBiomeExclusiveRule(aura)) return 0;
             if (isStrictWeatherExclusiveAura(aura) && !matchesCurrentBiome(aura.weather)) return 0;
 
@@ -11027,6 +11087,7 @@
             const validAuras = AURAS.filter(aura => {
                 if (aura.unrollable && (!oneTimeStats || oneTimeStats.sourceId !== aura.requiredPotion)) return false;
                 if (aura.requiredUnlock && (!oneTimeStats || !oneTimeStats.unlockAuras || !oneTimeStats.unlockAuras.includes(aura.id))) return false;
+                if (!passesLimboAuraRule(aura)) return false;
                 if (!passesBiomeExclusiveRule(aura)) return false;
                 if (isStrictWeatherExclusiveAura(aura) && !matchesCurrentBiome(aura.weather)) return false;
                 return true;
@@ -14130,9 +14191,10 @@
 
             container.innerHTML = '';
 
-            // Get all auras that have video cutscenes
+            // Get all auras that have video or text cutscenes
             const cutsceneAuras = AURAS.filter(aura =>
-                typeof hasVideoCutscene === 'function' && hasVideoCutscene(aura.id)
+                (typeof hasVideoCutscene === 'function' && hasVideoCutscene(aura.id)) ||
+                (typeof hasTextCutscene === 'function' && hasTextCutscene(aura.id))
             ).sort((a, b) => b.chance - a.chance); // Sort by rarity (rarest first)
 
             cutsceneAuras.forEach(aura => {
@@ -14168,9 +14230,11 @@
                 return;
             }
 
-            // Check if aura has a video cutscene
-            if (typeof hasVideoCutscene === 'function' && !hasVideoCutscene(aura.id)) {
-                showNotification('This aura has no video cutscene!', '#ff6b6b');
+            const hasVideo = typeof hasVideoCutscene === 'function' && hasVideoCutscene(aura.id);
+            const hasText = typeof hasTextCutscene === 'function' && hasTextCutscene(aura.id);
+
+            if (!hasVideo && !hasText) {
+                showNotification('This aura has no cutscene!', '#ff6b6b');
                 return;
             }
 
@@ -14179,11 +14243,15 @@
 
             showNotification(`Testing cutscene: ${aura.name}`, aura.color || '#00d4ff');
 
-            // Play ONLY the video cutscene without recording the aura
-            if (typeof playVideoCutscene === 'function') {
+            // Play cutscene without recording the aura
+            if (hasVideo && typeof playVideoCutscene === 'function') {
                 playVideoCutscene(aura, () => {
                     showNotification('Cutscene test complete!', '#2ecc71');
                 }, true);
+            } else if (hasText && typeof playTextCutscene === 'function') {
+                playTextCutscene(aura, () => {
+                    showNotification('Cutscene test complete!', '#2ecc71');
+                });
             } else {
                 showNotification('Cutscene system not available', '#ff6b6b');
             }
@@ -17465,7 +17533,7 @@ function updateAdminChromaticEffect() {
                 // Particle count
                 const particlesEl = document.getElementById('perf-particles');
                 if (particlesEl) {
-                    const particles = document.querySelectorAll('.raindrop, .snowflake, .dust-particle, .dust-streak, .wind-streak, .sand-cloud, .sakura-petal').length;
+                    const particles = document.querySelectorAll('.raindrop, .snowflake, .dust-particle, .dust-streak, .wind-streak, .sand-cloud, .sakura-petal, .ink-drip').length;
                     particlesEl.textContent = particles;
                     particlesEl.className = 'perf-value ' + (particles < 50 ? 'good' : particles < 150 ? 'warning' : 'bad');
                 }
@@ -18317,6 +18385,44 @@ function updateAdminChromaticEffect() {
             const isSingularity = aura.id === 'singularity';
             const isMagnumOpus = aura.id === 'magnum_opus';
             const isToll = aura.id === 'toll';
+            let tollSceneEl = null;
+            let tollBellTriggerTimeout = null;
+            let tollBellAudio = null;
+            let tollBellFadeInterval = null;
+
+            const stopTollBellAudio = (immediate = false) => {
+                if (!tollBellAudio) return;
+
+                if (tollBellFadeInterval) {
+                    clearInterval(tollBellFadeInterval);
+                    tollBellFadeInterval = null;
+                }
+
+                if (immediate) {
+                    tollBellAudio.pause();
+                    tollBellAudio.currentTime = 0;
+                    tollBellAudio = null;
+                    return;
+                }
+
+                const steps = 12;
+                const stepMs = 100;
+                const startVolume = Number.isFinite(tollBellAudio.volume) ? tollBellAudio.volume : 1;
+                let currentStep = 0;
+
+                tollBellFadeInterval = setInterval(() => {
+                    currentStep++;
+                    const nextVolume = Math.max(0, startVolume * (1 - currentStep / steps));
+                    tollBellAudio.volume = nextVolume;
+                    if (currentStep >= steps) {
+                        clearInterval(tollBellFadeInterval);
+                        tollBellFadeInterval = null;
+                        tollBellAudio.pause();
+                        tollBellAudio.currentTime = 0;
+                        tollBellAudio = null;
+                    }
+                }, stepMs);
+            };
 
             let theme;
             if (isAeternitas) {
@@ -18999,6 +19105,8 @@ function updateAdminChromaticEffect() {
                             overflow: hidden;
                             perspective: 1000px;
                             background: #000;
+                            opacity: 0;
+                            transition: opacity 1.2s ease;
                             
                             /* CRITICAL SCALING: Defines 1em relative to viewport size */
                             --_size: min(min(600px, 50vh), 50vw);
@@ -19314,13 +19422,25 @@ function updateAdminChromaticEffect() {
                 `;
 
                 const bell = tollScene.querySelector('#toll-bell');
+                tollSceneEl = tollScene;
 
                 // Play scary bell sound
                 const playBellSound = () => {
                     try {
-                        const bellAudio = new Audio('cutscenes/bell_toll.mp3');
-                        bellAudio.volume = 1.0;
-                        bellAudio.play().catch(e => console.log('Bell audio play failed:', e));
+                        stopTollBellAudio(true);
+                        const primaryBell = new Audio('cutscenes/toll_bell_menacing.mp3');
+                        primaryBell.onerror = () => {
+                            const fallbackBell = new Audio('cutscenes/bell_toll.mp3');
+                            fallbackBell.volume = 1.0;
+                            tollBellAudio = fallbackBell;
+                            fallbackBell.play().catch(e => console.log('Fallback bell audio play failed:', e));
+                        };
+                        primaryBell.volume = 1.0;
+                        tollBellAudio = primaryBell;
+                        primaryBell.play().catch(e => console.log('Bell audio play failed:', e));
+
+                        // Let the toll ring, then fade it out so it never bleeds past the cutscene.
+                        setTimeout(() => stopTollBellAudio(false), 4200);
                     } catch (e) {
                         console.log('Bell sound could not be played:', e);
                     }
@@ -19347,7 +19467,7 @@ function updateAdminChromaticEffect() {
                 };
 
                 // Automatically trigger the bell after 2 seconds
-                setTimeout(triggerBell, 2000);
+                tollBellTriggerTimeout = setTimeout(triggerBell, 2000);
 
             } else if (isSingularity) {
                 // === SINGULARITY: 3D REALISTIC BLACK HOLE ===
@@ -19954,6 +20074,16 @@ function updateAdminChromaticEffect() {
                         }
                     }, 3500); // Wait 3.5s (3s fade + 0.5s pause)
                 });
+            } else if (isToll) {
+                // Fade to black first, then reveal the bell scene.
+                overlay.style.background = '#000000';
+                overlay.style.transition = 'opacity 1.4s ease, background 1.4s ease';
+                requestAnimationFrame(() => {
+                    overlay.classList.add('active');
+                    setTimeout(() => {
+                        if (tollSceneEl) tollSceneEl.style.opacity = '1';
+                    }, 1100);
+                });
             } else {
                 requestAnimationFrame(() => {
                     overlay.classList.add('active');
@@ -20002,9 +20132,9 @@ function updateAdminChromaticEffect() {
                 };
 
                 // Determine speed based on aura
-                const typingSpeed = isAeternitas ? 25 : isAnotherRealm ? 30 : isSingularity ? 60 : 80;
-                const readTime = isAeternitas ? 400 : isAnotherRealm ? 800 : isSingularity ? 1500 : 2500;
-                const transitTime = isAeternitas ? 150 : isAnotherRealm ? 200 : isSingularity ? 600 : 1000;
+                const typingSpeed = isAeternitas ? 25 : isAnotherRealm ? 30 : isSingularity ? 60 : isToll ? 40 : 80;
+                const readTime = isAeternitas ? 400 : isAnotherRealm ? 800 : isSingularity ? 1500 : isToll ? 1200 : 2500;
+                const transitTime = isAeternitas ? 150 : isAnotherRealm ? 200 : isSingularity ? 600 : isToll ? 350 : 1000;
 
                 const typeInterval = setInterval(() => {
                     if (charIndex < text.length) {
@@ -20471,6 +20601,11 @@ function updateAdminChromaticEffect() {
                     cancelAnimationFrame(parseInt(overlay.dataset.gravityAnimation));
                     window.gravityEffects = null;
                 }
+                if (tollBellTriggerTimeout) {
+                    clearTimeout(tollBellTriggerTimeout);
+                    tollBellTriggerTimeout = null;
+                }
+                stopTollBellAudio(true);
 
                 // Fade out fog ambience
                 if (fogAmbience) {
@@ -20616,7 +20751,7 @@ function updateAdminChromaticEffect() {
 
             // Start typing after fade in
             // For Aeternitas, wait longer for the slow fade-in (3.5s delay + fade time)
-            const startDelay = isAeternitas ? 5000 : 2500;
+            const startDelay = isAeternitas ? 5000 : isToll ? 3300 : 2500;
             setTimeout(() => {
                 nextLine();
             }, startDelay);
@@ -21235,11 +21370,3 @@ function updateAdminChromaticEffect() {
 </body>
 
 </html>
-
-
-
-
-
-
-
-
